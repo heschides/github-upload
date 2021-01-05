@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkDeskUI", "Work Desk Program\WorkDeskUI.csproj", "{840CF7E6-8B94-47AC-9C33-1F104A49AC3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkDesk_Library", "WorkDesk Library\WorkDesk_Library.csproj", "{CDB35248-001E-4476-B8F3-1FC4412F9E44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{840CF7E6-8B94-47AC-9C33-1F104A49AC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840CF7E6-8B94-47AC-9C33-1F104A49AC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840CF7E6-8B94-47AC-9C33-1F104A49AC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840CF7E6-8B94-47AC-9C33-1F104A49AC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEC69AAE-4D4A-44A9-9501-6E4D2DE27D28}
+	EndGlobalSection
+EndGlobal
