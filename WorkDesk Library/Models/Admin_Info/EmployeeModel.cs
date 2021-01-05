@@ -21,6 +21,8 @@ namespace WorkDesk_Library.Models.Employee_Info
         public List<PhoneModel> PhoneList { get; set; } = new List<PhoneModel>();
         public List<RestrictionModel> RestrictionsList { get; set; } = new List<RestrictionModel>();
         public List<CitationModel> CitationsList { get; set; } = new List<CitationModel>();
+        public List<CertificationModel> CertificationList { get; set; } = new List<CertificationModel>();
+
         public string ListView
         {
             get
