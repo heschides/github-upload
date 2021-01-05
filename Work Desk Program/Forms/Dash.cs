@@ -45,9 +45,8 @@ namespace Work_Desk_Program
             employeeGridView.AutoGenerateColumns = false;
             employeeGridView.ColumnCount=8;
             employeeGridView.AutoSize = true;
-            var employeeListBound = new BindingList<EmployeeModel>(employeeList);
-            employeeGridView.DataSource = employeeListBound;
-              employeeGridView.Columns[0].HeaderText = "First Name";
+            employeeGridView.DataSource = employeeList;
+            employeeGridView.Columns[0].HeaderText = "First Name";
             employeeGridView.Columns[0].DataPropertyName = "FirstName";
             employeeGridView.Columns[1].HeaderText = "Last Name";
             employeeGridView.Columns[1].DataPropertyName = "LastName";
