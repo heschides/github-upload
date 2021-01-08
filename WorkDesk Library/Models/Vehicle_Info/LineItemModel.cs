@@ -12,6 +12,6 @@ namespace WorkDesk_Library.Models.Vehicle_Info
         public string Description { get; set; }
         public string Cost { get; set; }
         public string Code { get; set; }
-
+        // "Code" should probably be a type of its own.
     }
 }
