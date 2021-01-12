@@ -31,9 +31,9 @@ namespace Work_Desk_Program
             TitleModel newEmployeeTitle = new TitleModel();
                 newEmployeeTitle.Name = Convert.ToString(TitleValue.SelectedItem);
 
-            DepartmentModel newEmployeeDepartment = new DepartmentModel(
-                Convert.ToString(DepartmentValue.SelectedItem)    
-                );
+            DepartmentModel newEmployeeDepartment = new DepartmentModel();
+            newEmployeeDepartment.Name = Convert.ToString(DepartmentValue.SelectedItem);    
+                
             EmployeeModel.EmailModel NewEmployeeEmail1 = new EmployeeModel.EmailModel();
             NewEmployeeEmail1.Address = EmailValue1.Text;
             NewEmployeeEmail1.Type = EmailTypeValue1.Text;

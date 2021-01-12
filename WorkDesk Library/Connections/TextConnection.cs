@@ -34,7 +34,17 @@ namespace WorkDesk_Library.Connections
             throw new NotImplementedException();
         }
 
+        public Task<EmployeeModel> GetSelectedEmployee(int selectedEmployeeID)
+        {
+            throw new NotImplementedException();
+        }
+
         Task<List<EmployeeModel>> IDataConnection.GetEmployeeList()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<EmployeeModel>> IDataConnection.GetSelectedEmployee(int selectedEmployeeID)
         {
             throw new NotImplementedException();
         }

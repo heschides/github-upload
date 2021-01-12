@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WorkDesk_Library.Models.Employee_Info;
 
 namespace WorkDesk_Library.Models.Admin_Info
 {
@@ -10,6 +11,8 @@ namespace WorkDesk_Library.Models.Admin_Info
     {
         public string Name { get; set; }
         public int ID { get; set; }
+
+     
 
     }
 }

@@ -32,11 +32,11 @@ namespace Work_Desk_Program
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dash));
             this.InventoryTab = new System.Windows.Forms.TabPage();
-            this.TestButtonRetrieveInventory = new System.Windows.Forms.Button();
             this.InventoryGridView = new System.Windows.Forms.DataGridView();
             this.workDeskDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workDeskDataSet = new Work_Desk_Program.WorkDeskDataSet();
             this.EmployeeTab = new System.Windows.Forms.TabPage();
+            this.testButton = new System.Windows.Forms.Button();
             this.getEmployeeListButton = new System.Windows.Forms.Button();
             this.editEmployeeLabel = new System.Windows.Forms.Button();
             this.addEmployeeButton = new System.Windows.Forms.Button();
@@ -52,8 +52,8 @@ namespace Work_Desk_Program
             this.certificationsLabel = new System.Windows.Forms.Label();
             this.citationsListBox = new System.Windows.Forms.ListBox();
             this.citationsLabel = new System.Windows.Forms.Label();
-            this.restrictionsListBox = new System.Windows.Forms.ListBox();
-            this.restrictionsLabel = new System.Windows.Forms.Label();
+            this.EmployeesListBox = new System.Windows.Forms.ListBox();
+            this.employeeListLabel = new System.Windows.Forms.Label();
             this.hireDateListBox = new System.Windows.Forms.ListBox();
             this.hireDateLabel = new System.Windows.Forms.Label();
             this.jobTitleListBox = new System.Windows.Forms.ListBox();
@@ -65,7 +65,6 @@ namespace Work_Desk_Program
             this.EmployeeDetailsLabel = new System.Windows.Forms.Label();
             this.SelectDepartmentLabel = new System.Windows.Forms.Label();
             this.DepartmentCombobox = new System.Windows.Forms.ComboBox();
-            this.employeeGridView = new System.Windows.Forms.DataGridView();
             this.getAllEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.VehiclesTab = new System.Windows.Forms.TabPage();
             this.AddVehicleButton = new System.Windows.Forms.Button();
@@ -102,7 +101,6 @@ namespace Work_Desk_Program
             ((System.ComponentModel.ISupportInitialize)(this.workDeskDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workDeskDataSet)).BeginInit();
             this.EmployeeTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getAllEmployeesBindingSource)).BeginInit();
             this.VehiclesTab.SuspendLayout();
             this.EquipmentAssignmentsTab.SuspendLayout();
@@ -124,24 +122,13 @@ namespace Work_Desk_Program
             // InventoryTab
             // 
             this.InventoryTab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.InventoryTab.Controls.Add(this.TestButtonRetrieveInventory);
             this.InventoryTab.Controls.Add(this.InventoryGridView);
             this.InventoryTab.ForeColor = System.Drawing.Color.Black;
-            this.InventoryTab.Location = new System.Drawing.Point(4, 22);
+            this.InventoryTab.Location = new System.Drawing.Point(4, 26);
             this.InventoryTab.Name = "InventoryTab";
-            this.InventoryTab.Size = new System.Drawing.Size(1576, 735);
+            this.InventoryTab.Size = new System.Drawing.Size(1576, 731);
             this.InventoryTab.TabIndex = 5;
             this.InventoryTab.Text = "Inventory";
-            // 
-            // TestButtonRetrieveInventory
-            // 
-            this.TestButtonRetrieveInventory.Location = new System.Drawing.Point(3, 702);
-            this.TestButtonRetrieveInventory.Name = "TestButtonRetrieveInventory";
-            this.TestButtonRetrieveInventory.Size = new System.Drawing.Size(192, 30);
-            this.TestButtonRetrieveInventory.TabIndex = 1;
-            this.TestButtonRetrieveInventory.Text = "Test Button - Retrieve Inventory";
-            this.TestButtonRetrieveInventory.UseVisualStyleBackColor = true;
-            this.TestButtonRetrieveInventory.Click += new System.EventHandler(this.TestButtonRetrieveInventory_Click);
             // 
             // InventoryGridView
             // 
@@ -150,7 +137,7 @@ namespace Work_Desk_Program
             this.InventoryGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InventoryGridView.Location = new System.Drawing.Point(0, 0);
             this.InventoryGridView.Name = "InventoryGridView";
-            this.InventoryGridView.Size = new System.Drawing.Size(1576, 735);
+            this.InventoryGridView.Size = new System.Drawing.Size(1576, 731);
             this.InventoryGridView.TabIndex = 0;
             // 
             // workDeskDataSetBindingSource
@@ -166,6 +153,7 @@ namespace Work_Desk_Program
             // EmployeeTab
             // 
             this.EmployeeTab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.EmployeeTab.Controls.Add(this.testButton);
             this.EmployeeTab.Controls.Add(this.getEmployeeListButton);
             this.EmployeeTab.Controls.Add(this.editEmployeeLabel);
             this.EmployeeTab.Controls.Add(this.addEmployeeButton);
@@ -181,8 +169,8 @@ namespace Work_Desk_Program
             this.EmployeeTab.Controls.Add(this.certificationsLabel);
             this.EmployeeTab.Controls.Add(this.citationsListBox);
             this.EmployeeTab.Controls.Add(this.citationsLabel);
-            this.EmployeeTab.Controls.Add(this.restrictionsListBox);
-            this.EmployeeTab.Controls.Add(this.restrictionsLabel);
+            this.EmployeeTab.Controls.Add(this.EmployeesListBox);
+            this.EmployeeTab.Controls.Add(this.employeeListLabel);
             this.EmployeeTab.Controls.Add(this.hireDateListBox);
             this.EmployeeTab.Controls.Add(this.hireDateLabel);
             this.EmployeeTab.Controls.Add(this.jobTitleListBox);
@@ -194,22 +182,29 @@ namespace Work_Desk_Program
             this.EmployeeTab.Controls.Add(this.EmployeeDetailsLabel);
             this.EmployeeTab.Controls.Add(this.SelectDepartmentLabel);
             this.EmployeeTab.Controls.Add(this.DepartmentCombobox);
-            this.EmployeeTab.Controls.Add(this.employeeGridView);
-            this.EmployeeTab.Location = new System.Drawing.Point(4, 22);
+            this.EmployeeTab.Location = new System.Drawing.Point(4, 26);
             this.EmployeeTab.Name = "EmployeeTab";
-            this.EmployeeTab.Size = new System.Drawing.Size(1576, 735);
+            this.EmployeeTab.Size = new System.Drawing.Size(1576, 731);
             this.EmployeeTab.TabIndex = 4;
             this.EmployeeTab.Text = "Employees";
             // 
+            // testButton
+            // 
+            this.testButton.Location = new System.Drawing.Point(1386, 3);
+            this.testButton.Name = "testButton";
+            this.testButton.Size = new System.Drawing.Size(187, 28);
+            this.testButton.TabIndex = 30;
+            this.testButton.Text = "Test Button";
+            this.testButton.UseVisualStyleBackColor = true;
+            // 
             // getEmployeeListButton
             // 
-            this.getEmployeeListButton.Location = new System.Drawing.Point(102, 689);
+            this.getEmployeeListButton.Location = new System.Drawing.Point(74, 687);
             this.getEmployeeListButton.Name = "getEmployeeListButton";
-            this.getEmployeeListButton.Size = new System.Drawing.Size(134, 36);
+            this.getEmployeeListButton.Size = new System.Drawing.Size(215, 36);
             this.getEmployeeListButton.TabIndex = 29;
             this.getEmployeeListButton.Text = "Get Employee List";
             this.getEmployeeListButton.UseVisualStyleBackColor = true;
-            this.getEmployeeListButton.Click += new System.EventHandler(this.getEmployeeListButton_Click_1);
             // 
             // editEmployeeLabel
             // 
@@ -232,9 +227,10 @@ namespace Work_Desk_Program
             // statusListbox
             // 
             this.statusListbox.FormattingEnabled = true;
+            this.statusListbox.ItemHeight = 17;
             this.statusListbox.Location = new System.Drawing.Point(74, 542);
             this.statusListbox.Name = "statusListbox";
-            this.statusListbox.Size = new System.Drawing.Size(215, 30);
+            this.statusListbox.Size = new System.Drawing.Size(215, 21);
             this.statusListbox.TabIndex = 26;
             // 
             // statusLabel
@@ -242,82 +238,87 @@ namespace Work_Desk_Program
             this.statusLabel.AutoSize = true;
             this.statusLabel.Location = new System.Drawing.Point(25, 544);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(37, 13);
+            this.statusLabel.Size = new System.Drawing.Size(43, 17);
             this.statusLabel.TabIndex = 25;
             this.statusLabel.Text = "Status";
             // 
             // vehicleHistoryListbox
             // 
             this.vehicleHistoryListbox.FormattingEnabled = true;
-            this.vehicleHistoryListbox.Location = new System.Drawing.Point(1397, 48);
+            this.vehicleHistoryListbox.ItemHeight = 17;
+            this.vehicleHistoryListbox.Location = new System.Drawing.Point(1397, 82);
             this.vehicleHistoryListbox.Name = "vehicleHistoryListbox";
-            this.vehicleHistoryListbox.Size = new System.Drawing.Size(168, 654);
+            this.vehicleHistoryListbox.Size = new System.Drawing.Size(168, 616);
             this.vehicleHistoryListbox.TabIndex = 24;
             // 
             // vehicleHistoryLabel
             // 
             this.vehicleHistoryLabel.AutoSize = true;
-            this.vehicleHistoryLabel.Location = new System.Drawing.Point(1394, 32);
+            this.vehicleHistoryLabel.Location = new System.Drawing.Point(1394, 58);
             this.vehicleHistoryLabel.Name = "vehicleHistoryLabel";
-            this.vehicleHistoryLabel.Size = new System.Drawing.Size(77, 13);
+            this.vehicleHistoryLabel.Size = new System.Drawing.Size(93, 17);
             this.vehicleHistoryLabel.TabIndex = 23;
             this.vehicleHistoryLabel.Text = "Vehicle History";
             // 
             // adHocAssignmentsListbox
             // 
             this.adHocAssignmentsListbox.FormattingEnabled = true;
-            this.adHocAssignmentsListbox.Location = new System.Drawing.Point(1136, 48);
+            this.adHocAssignmentsListbox.ItemHeight = 17;
+            this.adHocAssignmentsListbox.Location = new System.Drawing.Point(1136, 82);
             this.adHocAssignmentsListbox.Name = "adHocAssignmentsListbox";
-            this.adHocAssignmentsListbox.Size = new System.Drawing.Size(255, 654);
+            this.adHocAssignmentsListbox.Size = new System.Drawing.Size(255, 616);
             this.adHocAssignmentsListbox.TabIndex = 22;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1133, 32);
+            this.label2.Location = new System.Drawing.Point(1133, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 13);
+            this.label2.Size = new System.Drawing.Size(128, 17);
             this.label2.TabIndex = 21;
             this.label2.Text = "Ad Hoc Assignments";
             // 
             // standardIssueAssignmentsListbox
             // 
             this.standardIssueAssignmentsListbox.FormattingEnabled = true;
-            this.standardIssueAssignmentsListbox.Location = new System.Drawing.Point(875, 48);
+            this.standardIssueAssignmentsListbox.ItemHeight = 17;
+            this.standardIssueAssignmentsListbox.Location = new System.Drawing.Point(875, 82);
             this.standardIssueAssignmentsListbox.Name = "standardIssueAssignmentsListbox";
-            this.standardIssueAssignmentsListbox.Size = new System.Drawing.Size(255, 654);
+            this.standardIssueAssignmentsListbox.Size = new System.Drawing.Size(255, 616);
             this.standardIssueAssignmentsListbox.TabIndex = 20;
             // 
             // standardIssueAssignmentsLabel
             // 
             this.standardIssueAssignmentsLabel.AutoSize = true;
-            this.standardIssueAssignmentsLabel.Location = new System.Drawing.Point(872, 32);
+            this.standardIssueAssignmentsLabel.Location = new System.Drawing.Point(872, 58);
             this.standardIssueAssignmentsLabel.Name = "standardIssueAssignmentsLabel";
-            this.standardIssueAssignmentsLabel.Size = new System.Drawing.Size(140, 13);
+            this.standardIssueAssignmentsLabel.Size = new System.Drawing.Size(171, 17);
             this.standardIssueAssignmentsLabel.TabIndex = 19;
             this.standardIssueAssignmentsLabel.Text = "Standard Issue Assignments";
             // 
             // certificationsListBox
             // 
             this.certificationsListBox.FormattingEnabled = true;
-            this.certificationsListBox.Location = new System.Drawing.Point(704, 472);
+            this.certificationsListBox.ItemHeight = 17;
+            this.certificationsListBox.Location = new System.Drawing.Point(548, 470);
             this.certificationsListBox.Name = "certificationsListBox";
-            this.certificationsListBox.Size = new System.Drawing.Size(154, 225);
+            this.certificationsListBox.Size = new System.Drawing.Size(238, 225);
             this.certificationsListBox.TabIndex = 18;
             // 
             // certificationsLabel
             // 
             this.certificationsLabel.AutoSize = true;
-            this.certificationsLabel.Location = new System.Drawing.Point(701, 456);
+            this.certificationsLabel.Location = new System.Drawing.Point(545, 454);
             this.certificationsLabel.Name = "certificationsLabel";
-            this.certificationsLabel.Size = new System.Drawing.Size(67, 13);
+            this.certificationsLabel.Size = new System.Drawing.Size(83, 17);
             this.certificationsLabel.TabIndex = 17;
             this.certificationsLabel.Text = "Certifications";
             // 
             // citationsListBox
             // 
             this.citationsListBox.FormattingEnabled = true;
-            this.citationsListBox.Location = new System.Drawing.Point(490, 470);
+            this.citationsListBox.ItemHeight = 17;
+            this.citationsListBox.Location = new System.Drawing.Point(318, 470);
             this.citationsListBox.Name = "citationsListBox";
             this.citationsListBox.Size = new System.Drawing.Size(208, 225);
             this.citationsListBox.TabIndex = 16;
@@ -325,35 +326,38 @@ namespace Work_Desk_Program
             // citationsLabel
             // 
             this.citationsLabel.AutoSize = true;
-            this.citationsLabel.Location = new System.Drawing.Point(487, 454);
+            this.citationsLabel.Location = new System.Drawing.Point(315, 454);
             this.citationsLabel.Name = "citationsLabel";
-            this.citationsLabel.Size = new System.Drawing.Size(47, 13);
+            this.citationsLabel.Size = new System.Drawing.Size(58, 17);
             this.citationsLabel.TabIndex = 15;
             this.citationsLabel.Text = "Citations";
             // 
-            // restrictionsListBox
+            // EmployeesListBox
             // 
-            this.restrictionsListBox.FormattingEnabled = true;
-            this.restrictionsListBox.Location = new System.Drawing.Point(311, 470);
-            this.restrictionsListBox.Name = "restrictionsListBox";
-            this.restrictionsListBox.Size = new System.Drawing.Size(173, 225);
-            this.restrictionsListBox.TabIndex = 14;
+            this.EmployeesListBox.FormattingEnabled = true;
+            this.EmployeesListBox.ItemHeight = 17;
+            this.EmployeesListBox.Location = new System.Drawing.Point(19, 81);
+            this.EmployeesListBox.Name = "EmployeesListBox";
+            this.EmployeesListBox.Size = new System.Drawing.Size(839, 327);
+            this.EmployeesListBox.TabIndex = 14;
             // 
-            // restrictionsLabel
+            // employeeListLabel
             // 
-            this.restrictionsLabel.AutoSize = true;
-            this.restrictionsLabel.Location = new System.Drawing.Point(308, 454);
-            this.restrictionsLabel.Name = "restrictionsLabel";
-            this.restrictionsLabel.Size = new System.Drawing.Size(62, 13);
-            this.restrictionsLabel.TabIndex = 13;
-            this.restrictionsLabel.Text = "Restrictions";
+            this.employeeListLabel.AutoSize = true;
+            this.employeeListLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeListLabel.Location = new System.Drawing.Point(15, 58);
+            this.employeeListLabel.Name = "employeeListLabel";
+            this.employeeListLabel.Size = new System.Drawing.Size(81, 20);
+            this.employeeListLabel.TabIndex = 13;
+            this.employeeListLabel.Text = "Employees";
             // 
             // hireDateListBox
             // 
             this.hireDateListBox.FormattingEnabled = true;
+            this.hireDateListBox.ItemHeight = 17;
             this.hireDateListBox.Location = new System.Drawing.Point(74, 506);
             this.hireDateListBox.Name = "hireDateListBox";
-            this.hireDateListBox.Size = new System.Drawing.Size(215, 30);
+            this.hireDateListBox.Size = new System.Drawing.Size(215, 21);
             this.hireDateListBox.TabIndex = 12;
             // 
             // hireDateLabel
@@ -361,16 +365,17 @@ namespace Work_Desk_Program
             this.hireDateLabel.AutoSize = true;
             this.hireDateLabel.Location = new System.Drawing.Point(10, 508);
             this.hireDateLabel.Name = "hireDateLabel";
-            this.hireDateLabel.Size = new System.Drawing.Size(52, 13);
+            this.hireDateLabel.Size = new System.Drawing.Size(63, 17);
             this.hireDateLabel.TabIndex = 11;
             this.hireDateLabel.Text = "Hire Date";
             // 
             // jobTitleListBox
             // 
             this.jobTitleListBox.FormattingEnabled = true;
+            this.jobTitleListBox.ItemHeight = 17;
             this.jobTitleListBox.Location = new System.Drawing.Point(74, 470);
             this.jobTitleListBox.Name = "jobTitleListBox";
-            this.jobTitleListBox.Size = new System.Drawing.Size(215, 30);
+            this.jobTitleListBox.Size = new System.Drawing.Size(215, 21);
             this.jobTitleListBox.TabIndex = 10;
             // 
             // jobTitleLabel
@@ -378,16 +383,17 @@ namespace Work_Desk_Program
             this.jobTitleLabel.AutoSize = true;
             this.jobTitleLabel.Location = new System.Drawing.Point(15, 472);
             this.jobTitleLabel.Name = "jobTitleLabel";
-            this.jobTitleLabel.Size = new System.Drawing.Size(47, 13);
+            this.jobTitleLabel.Size = new System.Drawing.Size(57, 17);
             this.jobTitleLabel.TabIndex = 9;
             this.jobTitleLabel.Text = "Job Title";
             // 
             // emailListBox
             // 
             this.emailListBox.FormattingEnabled = true;
+            this.emailListBox.ItemHeight = 17;
             this.emailListBox.Location = new System.Drawing.Point(74, 627);
             this.emailListBox.Name = "emailListBox";
-            this.emailListBox.Size = new System.Drawing.Size(215, 56);
+            this.emailListBox.Size = new System.Drawing.Size(215, 55);
             this.emailListBox.TabIndex = 8;
             // 
             // emailLabel
@@ -395,16 +401,17 @@ namespace Work_Desk_Program
             this.emailLabel.AutoSize = true;
             this.emailLabel.Location = new System.Drawing.Point(30, 627);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(32, 13);
+            this.emailLabel.Size = new System.Drawing.Size(39, 17);
             this.emailLabel.TabIndex = 7;
             this.emailLabel.Text = "Email";
             // 
             // phoneListBox
             // 
             this.phoneListBox.FormattingEnabled = true;
+            this.phoneListBox.ItemHeight = 17;
             this.phoneListBox.Location = new System.Drawing.Point(74, 578);
             this.phoneListBox.Name = "phoneListBox";
-            this.phoneListBox.Size = new System.Drawing.Size(215, 43);
+            this.phoneListBox.Size = new System.Drawing.Size(215, 38);
             this.phoneListBox.TabIndex = 6;
             // 
             // phoneLabel
@@ -412,7 +419,7 @@ namespace Work_Desk_Program
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Location = new System.Drawing.Point(24, 578);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(38, 13);
+            this.phoneLabel.Size = new System.Drawing.Size(44, 17);
             this.phoneLabel.TabIndex = 5;
             this.phoneLabel.Text = "Phone";
             // 
@@ -431,7 +438,7 @@ namespace Work_Desk_Program
             this.SelectDepartmentLabel.AutoSize = true;
             this.SelectDepartmentLabel.Location = new System.Drawing.Point(16, 16);
             this.SelectDepartmentLabel.Name = "SelectDepartmentLabel";
-            this.SelectDepartmentLabel.Size = new System.Drawing.Size(95, 13);
+            this.SelectDepartmentLabel.Size = new System.Drawing.Size(115, 17);
             this.SelectDepartmentLabel.TabIndex = 3;
             this.SelectDepartmentLabel.Text = "Select Department";
             // 
@@ -440,22 +447,9 @@ namespace Work_Desk_Program
             this.DepartmentCombobox.FormattingEnabled = true;
             this.DepartmentCombobox.Location = new System.Drawing.Point(141, 13);
             this.DepartmentCombobox.Name = "DepartmentCombobox";
-            this.DepartmentCombobox.Size = new System.Drawing.Size(246, 21);
+            this.DepartmentCombobox.Size = new System.Drawing.Size(246, 25);
             this.DepartmentCombobox.TabIndex = 2;
             this.DepartmentCombobox.Text = "All";
-            // 
-            // employeeGridView
-            // 
-            this.employeeGridView.AllowUserToAddRows = false;
-            this.employeeGridView.AllowUserToDeleteRows = false;
-            this.employeeGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.employeeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeeGridView.Location = new System.Drawing.Point(18, 42);
-            this.employeeGridView.MaximumSize = new System.Drawing.Size(840, 348);
-            this.employeeGridView.Name = "employeeGridView";
-            this.employeeGridView.ReadOnly = true;
-            this.employeeGridView.Size = new System.Drawing.Size(840, 348);
-            this.employeeGridView.TabIndex = 1;
             // 
             // getAllEmployeesBindingSource
             // 
@@ -466,9 +460,9 @@ namespace Work_Desk_Program
             // 
             this.VehiclesTab.BackColor = System.Drawing.Color.WhiteSmoke;
             this.VehiclesTab.Controls.Add(this.AddVehicleButton);
-            this.VehiclesTab.Location = new System.Drawing.Point(4, 22);
+            this.VehiclesTab.Location = new System.Drawing.Point(4, 26);
             this.VehiclesTab.Name = "VehiclesTab";
-            this.VehiclesTab.Size = new System.Drawing.Size(1576, 735);
+            this.VehiclesTab.Size = new System.Drawing.Size(1576, 731);
             this.VehiclesTab.TabIndex = 3;
             this.VehiclesTab.Text = "Fleet Info";
             // 
@@ -485,9 +479,9 @@ namespace Work_Desk_Program
             // VehicleAssignmentsTab
             // 
             this.VehicleAssignmentsTab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.VehicleAssignmentsTab.Location = new System.Drawing.Point(4, 22);
+            this.VehicleAssignmentsTab.Location = new System.Drawing.Point(4, 26);
             this.VehicleAssignmentsTab.Name = "VehicleAssignmentsTab";
-            this.VehicleAssignmentsTab.Size = new System.Drawing.Size(1576, 735);
+            this.VehicleAssignmentsTab.Size = new System.Drawing.Size(1576, 731);
             this.VehicleAssignmentsTab.TabIndex = 2;
             this.VehicleAssignmentsTab.Text = "VehicleAssignments";
             // 
@@ -495,10 +489,10 @@ namespace Work_Desk_Program
             // 
             this.EquipmentAssignmentsTab.BackColor = System.Drawing.Color.WhiteSmoke;
             this.EquipmentAssignmentsTab.Controls.Add(this.label1);
-            this.EquipmentAssignmentsTab.Location = new System.Drawing.Point(4, 22);
+            this.EquipmentAssignmentsTab.Location = new System.Drawing.Point(4, 26);
             this.EquipmentAssignmentsTab.Name = "EquipmentAssignmentsTab";
             this.EquipmentAssignmentsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EquipmentAssignmentsTab.Size = new System.Drawing.Size(1576, 735);
+            this.EquipmentAssignmentsTab.Size = new System.Drawing.Size(1576, 731);
             this.EquipmentAssignmentsTab.TabIndex = 1;
             this.EquipmentAssignmentsTab.Text = "Equipment Assignments";
             // 
@@ -519,10 +513,10 @@ namespace Work_Desk_Program
             this.DashTab.Controls.Add(this.HeaderLabel);
             this.DashTab.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DashTab.ForeColor = System.Drawing.Color.Coral;
-            this.DashTab.Location = new System.Drawing.Point(4, 22);
+            this.DashTab.Location = new System.Drawing.Point(4, 26);
             this.DashTab.Name = "DashTab";
             this.DashTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DashTab.Size = new System.Drawing.Size(1576, 735);
+            this.DashTab.Size = new System.Drawing.Size(1576, 731);
             this.DashTab.TabIndex = 0;
             this.DashTab.Text = "Dashboard";
             // 
@@ -546,6 +540,7 @@ namespace Work_Desk_Program
             this.NavigationTabs.Controls.Add(this.InventoryTab);
             this.NavigationTabs.Controls.Add(this.AdministrationTab);
             this.NavigationTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NavigationTabs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NavigationTabs.Location = new System.Drawing.Point(0, 0);
             this.NavigationTabs.Name = "NavigationTabs";
             this.NavigationTabs.SelectedIndex = 0;
@@ -563,10 +558,10 @@ namespace Work_Desk_Program
             this.AdministrationTab.Controls.Add(this.button5);
             this.AdministrationTab.Controls.Add(this.button3);
             this.AdministrationTab.Controls.Add(this.button2);
-            this.AdministrationTab.Location = new System.Drawing.Point(4, 22);
+            this.AdministrationTab.Location = new System.Drawing.Point(4, 26);
             this.AdministrationTab.Name = "AdministrationTab";
             this.AdministrationTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AdministrationTab.Size = new System.Drawing.Size(1576, 735);
+            this.AdministrationTab.Size = new System.Drawing.Size(1576, 731);
             this.AdministrationTab.TabIndex = 6;
             this.AdministrationTab.Text = "Administration";
             // 
@@ -729,7 +724,6 @@ namespace Work_Desk_Program
             ((System.ComponentModel.ISupportInitialize)(this.workDeskDataSet)).EndInit();
             this.EmployeeTab.ResumeLayout(false);
             this.EmployeeTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getAllEmployeesBindingSource)).EndInit();
             this.VehiclesTab.ResumeLayout(false);
             this.EquipmentAssignmentsTab.ResumeLayout(false);
@@ -783,7 +777,6 @@ namespace Work_Desk_Program
         private System.Windows.Forms.BindingSource getAllEmployeesBindingSource3;
         private System.Windows.Forms.BindingSource getAllEmployeesBindingSource4;
         private System.Windows.Forms.BindingSource iDataConnectionBindingSource;
-        private System.Windows.Forms.DataGridView employeeGridView;
         private System.Windows.Forms.BindingSource employeeModelBindingSource;
         private System.Windows.Forms.BindingSource phoneModelBindingSource;
         private System.Windows.Forms.BindingSource phoneModelBindingSource1;
@@ -800,8 +793,8 @@ namespace Work_Desk_Program
         private System.Windows.Forms.Label jobTitleLabel;
         private System.Windows.Forms.ListBox citationsListBox;
         private System.Windows.Forms.Label citationsLabel;
-        private System.Windows.Forms.ListBox restrictionsListBox;
-        private System.Windows.Forms.Label restrictionsLabel;
+        private System.Windows.Forms.ListBox EmployeesListBox;
+        private System.Windows.Forms.Label employeeListLabel;
         private System.Windows.Forms.ListBox vehicleHistoryListbox;
         private System.Windows.Forms.Label vehicleHistoryLabel;
         private System.Windows.Forms.ListBox adHocAssignmentsListbox;
@@ -815,10 +808,10 @@ namespace Work_Desk_Program
         private System.Windows.Forms.ListBox statusListbox;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.DataGridView InventoryGridView;
-        private System.Windows.Forms.Button TestButtonRetrieveInventory;
         private System.Windows.Forms.BindingSource equipmentModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Button getEmployeeListButton;
+        private System.Windows.Forms.Button testButton;
     }
 }

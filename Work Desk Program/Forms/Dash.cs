@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Work_Desk_Program.Forms;
 using WorkDesk_Library;
+using WorkDesk_Library.Models.Admin_Info;
 using WorkDesk_Library.Models.Employee_Info;
 using WorkDesk_Library.Models.Equipment_Info;
 using static WorkDesk_Library.Models.Employee_Info.EmployeeModel;
@@ -23,87 +25,159 @@ namespace Work_Desk_Program
             InitializeComponent();
         }
 
-        public async Task<List<EquipmentModel>> InitializeInventoryList()
-        {
-            List<EquipmentModel> newEquipmentListCompiled = await GlobalConfig.Connection.GetEquipmentList();
-            return newEquipmentListCompiled;
-        }
-          
-        public async Task<List<EmployeeModel>> InitializeEmployeeList()
-        {
-            List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployeeList();
-            return newEmployeeListCompiled;
-        }
-        private async void Dash_Load(object sender, System.EventArgs e)
-        {
-            var inventoryList = await InitializeInventoryList();
-            InventoryGridView.DataSource = inventoryList;
 
-            //Initialize Employee List
-          
-            var employeeList = await InitializeEmployeeList();
-            employeeGridView.AutoGenerateColumns = false;
-            employeeGridView.ColumnCount=8;
-            employeeGridView.AutoSize = true;
-            employeeGridView.DataSource = employeeList;
-            employeeGridView.Columns[0].HeaderText = "First Name";
-            employeeGridView.Columns[0].DataPropertyName = "FirstName";
-            employeeGridView.Columns[1].HeaderText = "Last Name";
-            employeeGridView.Columns[1].DataPropertyName = "LastName";
-            employeeGridView.Columns[2].HeaderText = "Nickname";
-            employeeGridView.Columns[2].DataPropertyName = "Nickname";
-            employeeGridView.Columns[3].HeaderText = "JobTitle";
-            employeeGridView.Columns[3].DataPropertyName = "JobTitle";
-            employeeGridView.Columns[4].HeaderText = "Forklift";
-            employeeGridView.Columns[4].DataPropertyName = "ForkliftCert";
-            employeeGridView.Columns[5].HeaderText = "AWP";
-            employeeGridView.Columns[5].DataPropertyName = "AWPCert";
-            employeeGridView.Columns[6].HeaderText = "Confined Space";
-            employeeGridView.Columns[6].DataPropertyName = "ConfinedSpaceCert";
-            employeeGridView.Columns[7].HeaderText = "NFPA51b";
-            employeeGridView.Columns[7].DataPropertyName = "NFPA51bCert";
-
+        //DASH SHELL
+        public async void Dash_Load(object sender, System.EventArgs e)
+        {
+            await InitializeInventoryList();
+            await InitializeEmployeeList();
+          //  CreateEmployeeTable();
+            EmployeesListBox.DataSource = employeeListBoxString(globalEmployeeList);
         }
 
 
-        private void AddEmployeeButton_Click(object sender, EventArgs e)
-        {
-            AddEmployee AddEmployeeForm = new AddEmployee();
-            AddEmployeeForm.Show();       
-        }
+        //SUMMARY TAB        
 
+
+        //FLEET TAB
         private void AddVehicleButton_Click(object sender, EventArgs e)
         {
             AddVehicle AddVehicleForm = new AddVehicle();
             AddVehicleForm.Show();
         }
 
-        private async void NewItemButton_Click_1(object sender, EventArgs e)
+
+        //EMPLOYEE TAB
+                public static List<EmployeeModel> globalEmployeeList = new List<EmployeeModel>();
+
+                public static async Task<List<EmployeeModel>> InitializeEmployeeList()
+                {
+                    globalEmployeeList = await GlobalConfig.Connection.GetEmployeeList();
+                    return globalEmployeeList;
+                }
+
+
+        //CREATE EMPLOYEE TABLE
+
+
+
+
+
+
+        //public void CreateEmployeeTable()
+        //{
+        //    EmployeeGridView.DataSource = globalEmployeeList;
+        //    EmployeeGridView.Columns[0].HeaderText = "Employee ID";
+        //    EmployeeGridView.Columns["ID"].DisplayIndex = 0;
+        //    EmployeeGridView.Columns["ListView"].DisplayIndex = 1;
+        //    EmployeeGridView.Columns["ListView"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+        //    EmployeeGridView.Columns["Department"].DisplayIndex = 2;
+        //    EmployeeGridView.Columns["JobTitle"].DisplayIndex = 3;
+        //    EmployeeGridView.Columns["JobTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+        //    EmployeeGridView.Columns["JobTitle"].DataPropertyName = "JobTitle_Name";
+        //    EmployeeGridView.Columns["Nickname"].Visible = false;
+        //    EmployeeGridView.Columns["FirstName"].Visible = false;
+        //    EmployeeGridView.Columns["LastName"].Visible = false;
+        //    EmployeeGridView.Columns["HireDate"].Visible = false;
+        //}
+
+
+        //CREATE DATASOURCES FOR LISTBOXES 
+
+        private IList<string> employeeListBoxString(List<EmployeeModel> employees)
         {
-            List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployeeList();
-  
-            StringBuilder employeesString = new StringBuilder();
-
-            foreach (EmployeeModel empmod in newEmployeeListCompiled)
+            IList<string> result = new List<string>();
+            foreach (EmployeeModel em in employees)
             {
-                employeesString.AppendLine(empmod.ToEmailString());
+                result.Add($"{em.LastName}, {em.FirstName}");
             }
-            MessageBox.Show(employeesString.ToString());
+            return result;
         }
+        private IList<string> certificationListBoxString(int id, List<EmployeeModel> employees)
+                {
+                    IList<string> result = new List<string>();
+                    foreach (EmployeeModel em in employees.Where(person => person.ID == id))
+                    {
+                        foreach (CertificationModel cm in em.CertificationList)
+                            result.Add(cm.Name);
+                    }
+                    return result;
+                }
+
+                private IList<string> citationsListBoxString(int id, List<EmployeeModel> employees)
+                {
+                    IList<string> result = new List<string>();
+                    foreach (EmployeeModel em in employees.Where(person => person.ID == id))
+                    {
+                        foreach (CitationModel cm in em.CitationsList)
+                            result.Add($"{cm.Name}: {cm.Description}");
+                    }
+                    return result;
+                }
+
+                public IList<string> restrictionsListBoxString(int id, List<EmployeeModel> employees)
+                {
+                    IList<string> result = new List<string>();
+                    foreach (EmployeeModel em in employees.Where(person => person.ID == id))
+                    {
+                        foreach (RestrictionModel rm in em.RestrictionsList)
+                            result.Add(rm.Type);
+                    }
+                    return result;
+                }
+
+        private void EmployeeGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+                {
+            //        DataGridViewCell selectedEmployeeCell = EmployeeGridView.CurrentCell;
+              //      int selectedEmployeeRow = selectedEmployeeCell.RowIndex;
+               //     int selectedEmployeeID = (int)EmployeeGridView.Rows[selectedEmployeeRow].Cells[0].Value;
+              //      certificationsListBox.DataSource = certificationListBoxString(id: selectedEmployeeID, employees: globalEmployeeList);
+               //     citationsListBox.DataSource = citationsListBoxString(id: selectedEmployeeID, employees: globalEmployeeList);
+                    
+                }
 
 
-        private async void TestButtonRetrieveInventory_Click(object sender, EventArgs e)
+                private void AddEmployeeButton_Click(object sender, EventArgs e)
+                {
+                    AddEmployee AddEmployeeForm = new AddEmployee();
+                    AddEmployeeForm.Show();
+                }
+
+
+        //INVENTORY TAB
+        public static async Task<List<EquipmentModel>> InitializeInventoryList()
         {
             List<EquipmentModel> newEquipmentListCompiled = await GlobalConfig.Connection.GetEquipmentList();
-            StringBuilder equipmentString = new StringBuilder();
-                foreach (EquipmentModel equipmod in newEquipmentListCompiled)
-                {
-                equipmentString.AppendLine(equipmod.ToCommentString());
-                }
-            MessageBox.Show(equipmentString.ToString());
+            return newEquipmentListCompiled;
+
+            //ADMINISTRATION TAB
+
+
         }
 
-        private async void getEmployeeListButton_Click_1(object sender, EventArgs e)
+    }
+}
+
+
+
+        /* TEST CODE:
+
+        async void NewItemButton_Click(object sender, EventArgs e)
+        {
+            List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployeeList();
+
+            StringBuilder employeesString = new StringBuilder();
+
+            foreach (EmployeeModel empmod in newEmployeeListCompiled)
+            {
+                employeesString.AppendLine(empmod.ToEmailString());
+            }
+            MessageBox.Show(employeesString.ToString());
+        }
+
+      
+        
+        private async void GetEmployeeListButton_Click(object sender, EventArgs e)
         {
 
             List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployeeList();
@@ -114,9 +188,24 @@ namespace Work_Desk_Program
                 employeesString.AppendLine(empmod.ToEmailString());
             }
             MessageBox.Show(employeesString.ToString());
+
+             
+        
+        private async void testButton_Click(object sender, EventArgs e)
+        {
+            int selectedEmployeeID = 9;
+            var testEmployee = await GlobalConfig.Connection.GetSelectedEmployee(selectedEmployeeID);
+            StringBuilder nameString = new StringBuilder();
+            foreach (EmployeeModel te in testEmployee)
+            {
+                nameString.AppendLine($"{te.ToEmailString()}");
+            }
+            MessageBox.Show($"{nameString.ToString()}");
         }
-    }
- }
+
+        */
+    
+
 
 
    

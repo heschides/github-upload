@@ -96,6 +96,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binding_Assist\MyTypeDescriptionProvider.cs" />
+    <Compile Include="Binding_Assist\MyCustomTypeDescriptor.cs" />
+    <Compile Include="Binding_Assist\SubPropertyDescriptor.cs" />
     <Compile Include="Models\Admin_Info\CertificationModel.cs" />
     <Compile Include="Models\Admin_Info\CommentModel.cs" />
     <Compile Include="Connections\SqlConnection.cs" />

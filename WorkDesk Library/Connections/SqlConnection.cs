@@ -132,35 +132,117 @@ namespace WorkDesk_Library.Connections
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
             {
-                var sql = @"SELECT e.id, e.FirstName, e.LastName, e.Nickname, em.EmployeeID, em.Address, em.Type, e.JobTitleID, jt.id, jt.Name, p.EmployeeID, p.Number, p.Type 
+                var sql = @"SELECT e.id, e.FirstName, e.LastName, e.Nickname,
+                                   em.EmployeeID, em.Address, em.Type, 
+                                   e.JobTitleID, jt.id, jt.Name, 
+                                   p.EmployeeID, p.Number, p.Type,
+                                   ect.EmployeeID, ect.NameID, ect.InitialDate, ect.ExpirationDate,
+                                   ct.id, ct.Name,
+                                   ecit.EmployeeID, ecit.CitationTypeID, ecit.Description, ecit.Date,
+                                   cit.id, cit.Name,
+                                   e.DepartmentID, d.DepartmentName
+                                   
+
+                          FROM dbo.Employees e 
+                          LEFT JOIN dbo.Emails em
+                          ON em.EmployeeID = e.id
+                          LEFT JOIN dbo.JobTitles jt                           
+                          ON e.JobTitleID = jt.id
+                          LEFT JOIN Phones p
+                          ON p.EmployeeID = e.id
+                          LEFT JOIN dbo.EmployeeCertificationType ect
+                          ON ect.EmployeeID = e.id
+                          LEFT JOIN dbo.CertificationType ct
+                          ON ect.NameID = ct.id
+                          LEFT JOIN dbo.EmployeeCitationType ecit
+                          ON ecit.EmployeeID = e.id
+                          LEFT JOIN dbo.CitationTypes cit
+                          ON ecit.CitationTypeID = cit.id
+                          LEFT JOIN dbo.Departments d
+                          ON e.DepartmentID = d.id"; 
+
+                var employees = await connection.QueryAsync<EmployeeModel, EmailModel, TitleModel, PhoneModel, CertificationModel, CitationModel, DepartmentModel, EmployeeModel>(sql, (e, em, t, p, c, ci, d) =>
+                {
+                    e.EmailList.Add(em);
+                    e.JobTitle = t;
+                    e.Department = d;
+                    e.PhoneList.Add(p);
+                    e.CertificationList.Add(c);
+                    e.CitationsList.Add(ci);
+                    return e;
+                }, splitOn: "EmployeeID, JobTitleID, EmployeeID, EmployeeID, EmployeeID, DepartmentID");
+
+                var result = employees.GroupBy(e => e.ID).Select(g =>
+                {
+                    var groupedEmployee = g.First();
+                    groupedEmployee.EmailList = g.Select(e => e.EmailList.Single()).ToList();
+                    groupedEmployee.PhoneList = g.Select(e => e.PhoneList.Single()).ToList();
+                    groupedEmployee.CertificationList = g.Select(e => e.CertificationList.Single()).ToList();
+                    groupedEmployee.CitationsList = g.Select(e => e.CitationsList.Single()).ToList();
+                    return groupedEmployee;
+                });
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<EmployeeModel>> GetSelectedEmployee(int selectedEmployeeID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
+            {
+                var par = new
+                {
+                    SelectedEmployeeID = selectedEmployeeID
+                };
+
+                var sql = @"SELECT e.id, e.FirstName, e.LastName, e.Nickname, 
+                                   em.EmployeeID, em.Address, em.Type, 
+                                   e.JobTitleID, jt.id, jt.Name, 
+                                   p.EmployeeID, p.Number, p.Type,
+                                   ect.EmployeeID, ect.NameID, ect.InitialDate, ect.ExpirationDate,
+                                   ct.id, ct.Name
+                          
                           FROM dbo.Employees e 
                           LEFT JOIN dbo.Emails em
                           ON em.EmployeeID = e.id
                           LEFT JOIN dbo.JobTitles jt  
                           ON e.JobTitleID = jt.id
                           LEFT JOIN Phones p
-                          ON p.EmployeeID = e.id;"
-                        ;
+                          ON p.EmployeeID = e.id
+                          LEFT JOIN dbo.EmployeeCertificationType ect
+                          ON ect.EmployeeID = e.id
+                          LEFT JOIN dbo.CertificationType ct
+                          ON ect.NameID = ct.id
+                          WHERE e.id = @SelectedEmployeeID";
 
-                var employees = await connection.QueryAsync<EmployeeModel, EmailModel, TitleModel, PhoneModel, EmployeeModel>(sql, (e, em, t, p) =>
+                List<EmployeeModel> selectedEmployee = new List<EmployeeModel>();
+
+                var employees = await connection.QueryAsync<EmployeeModel, EmailModel, TitleModel, PhoneModel, CertificationModel, EmployeeModel>(sql, (e, em, t, p, c) =>
                 {
                     e.EmailList.Add(em);
                     e.JobTitle = t;
                     e.PhoneList.Add(p);
+                    e.CertificationList.Add(c);
                     return e;
-                }, splitOn: "EmployeeID, JobTitleID, EmployeeID");
+                },
+                    par, splitOn: "EmployeeID, JobTitleID, EmployeeID, EmployeeID");
 
-                var result = employees.GroupBy(e => e.ID).Select(g =>
+                var groupedEmployees = employees.GroupBy(x => x.ID);
+                
+                foreach (EmployeeModel empmod in groupedEmployees)
                 {
-                    var groupedEmployee = g.First();
-                    groupedEmployee.EmailList = g.Select(e => e.EmailList.Single()).ToList();
-                    return groupedEmployee;
-                });
-                return result.ToList();
+                    empmod.EmailList.GroupBy(eml => eml.Address);
+                    empmod.CertificationList.GroupBy(clm => clm.Name);
+                    empmod.PhoneList.GroupBy(plm => plm.Number);
+                }
+
+                IEnumerable<EmployeeModel> groupedEmployeeList = groupedEmployees.SelectMany(group => group);
+
+                return groupedEmployeeList.ToList();
+            
             }
 
+            
         }
-
         public async Task<List<EquipmentModel>> GetEquipmentList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
@@ -191,6 +273,7 @@ namespace WorkDesk_Library.Connections
 
  
 
-
+//I have a list of PersonModel in an IEnumerable.  I want to group it on ID.
+//I would, presumably, then have only one Person ID, and the EmailList and 
 
 

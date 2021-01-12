@@ -15,6 +15,7 @@ namespace WorkDesk_Library.Connections
         EquipmentModel CreateEquipment(EquipmentModel model);
         Task<List<EmployeeModel>> GetEmployeeList();
         Task<List<EquipmentModel>> GetEquipmentList();
+        Task<List<EmployeeModel>> GetSelectedEmployee(int selectedEmployeeID);
     }
 }
  
