@@ -8,8 +8,7 @@ namespace WorkDesk_Library
 {
     class Enums
     {
-    
-    
+       
     }
 
 }

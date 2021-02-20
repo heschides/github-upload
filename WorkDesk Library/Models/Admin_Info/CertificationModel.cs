@@ -12,12 +12,7 @@ namespace WorkDesk_Library.Models.Admin_Info
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime InitialDate { get; set; }
-        public DateTime ExpirationDate { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Name}: {Environment.NewLine} Initial: {InitialDate} Expiration: {ExpirationDate}";
-        }
+        public DateTime EndDate { get; set; }
 
     }
 }

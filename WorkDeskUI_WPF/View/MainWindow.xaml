@@ -1,0 +1,308 @@
+﻿<Window x:Class="WorkDeskUI_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkDeskUI_WPF"
+        mc:Ignorable="d"
+        Title="R*Bin"
+        Background="{DynamicResource ResourceKey=TabBackgroundBrush}"
+        Height="900"
+        Width="1600"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
+  <Grid x:Name="gridAppLayout">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="30" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <DockPanel>
+      <Menu DockPanel.Dock="Top">
+        <MenuItem Header="_File">
+          <MenuItem Header="_New User" />
+          <MenuItem Header="_New Business" />
+          <MenuItem Header="_Exit" />
+        </MenuItem>
+        <MenuItem Header="_Edit">
+          <MenuItem Header="Options" />
+        </MenuItem>
+      </Menu>
+    </DockPanel>
+
+    <TabControl Grid.Row="1"
+                RenderTransformOrigin="0.501,0.482">
+      <TabItem Name="tabDashboard">
+        <TabItem.Header>
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Dashboard"
+                       TextAlignment="Center" />
+          </StackPanel>
+        </TabItem.Header>
+
+        <Grid Name="gridDashboard"
+              Margin="10,0,0,0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="780" />
+            <RowDefinition Height="10" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition MinWidth="100" />
+            <ColumnDefinition Width="10" />
+          </Grid.ColumnDefinitions>
+        </Grid>
+      </TabItem>
+
+      <TabItem Name="tabEmployees">
+        <TabItem.Header>
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock  VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        FontWeight="Normal"
+                        MinWidth="125"
+                        Text="Employees" />
+          </StackPanel>
+        </TabItem.Header>
+
+        <Grid Name="gridEmployees"
+              Background="WhiteSmoke"
+              RenderTransformOrigin="0.351,0.728"
+              Margin="0,0,0,0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="130.04" />
+            <RowDefinition Height="239.96" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="325" />
+            <ColumnDefinition MinWidth="130" />
+            <ColumnDefinition MinWidth="140" />
+            <ColumnDefinition Width="10" />
+          </Grid.ColumnDefinitions>
+
+          <ComboBox Name="cbSelectDepartment"
+                    Height="30"
+                    Width="180"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="2,10,218,90"
+                    IsEditable="True"
+                    IsReadOnly="True"
+                    Text="Select Department"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Grid.Column="1" />
+
+          <Button Width="100"
+                  Height="30"
+                  Content="Add Employee"
+                  Grid.Row="1"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin="0,10,0,0"
+                  Grid.Column="2" />
+
+          <Button Width="100"
+                  Height="30"
+                  Content="Edit Employee"
+                  Grid.Row="1"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin="0,10,110,0"
+                  Grid.Column="2" />
+
+          <ListView x:Name="employeeGridView"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2">
+            <ListView.View>
+              <GridView >
+                <GridViewColumn Width="20"
+                                Header="ID"
+                                DisplayMemberBinding ="{Binding Path=ID}"/>
+                <GridViewColumn Width="180"
+                                Header="Name"
+                                DisplayMemberBinding="{Binding Path=ListView}"/>
+                <GridViewColumn Width="20"
+                                Header="Title"
+                                DisplayMemberBinding="{Binding Path=JobTitle}"/>
+              </GridView>
+             
+            </ListView.View>
+          </ListView>
+
+          <!--<DataGrid x:Name="gridViewEmployees"
+                    Grid.Row="1"
+                    MinWidth="380"
+                    Margin="0,50,0,25"
+                    BorderThickness="0"
+                    AutoGenerateColumns="False"
+                    GridLinesVisibility="None"
+                    AlternatingRowBackground="#FFEFE2F7"
+                    IsReadOnly="True"
+                    RowHeaderWidth="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Column="1"
+                    Grid.RowSpan="2">
+            <DataGrid.Columns>
+              <DataGridTextColumn MinWidth="20"
+                                  Header="ID"
+                                  Binding="{Binding ID}" />
+              <DataGridTextColumn MinWidth="180"
+                                  Header="Name"
+                                  Binding="{Binding ListView}" />
+              <DataGridTextColumn MinWidth="180"
+                                  Header="Title"
+                                  Binding="{Binding JobTitle}" />
+            </DataGrid.Columns>
+          </DataGrid>-->
+
+          <Label Grid.Row="3"
+                 Grid.ColumnSpan="3"
+                 Content="Employee Details"
+                 FontSize="18"
+                 FontFamily="SegueUI" />
+
+          <Label Grid.Column="1"
+                 Grid.Row="4"
+                 HorizontalAlignment="Center"
+                 Width="74"
+                 Content="Department" />
+          <TextBox x:Name="txtDepartment"
+                   Grid.Column="2"
+                   Grid.Row="4"
+                   Height="30"
+                   HorizontalAlignment="Left"
+                   TextAlignment="Center"
+                   MinWidth="300"
+                   d:Text="Love In the Time Of Cholera"
+                   Margin="0,3,0,2" />
+
+          <Label Grid.Column="1"
+                 Grid.Row="5"
+                 HorizontalAlignment="Left"
+                 Width="42"
+                 Margin="33,0,0,0"
+                 Content="Status" />
+          <TextBox x:Name="txtStatus"
+                   Grid.Column="2"
+                   Grid.Row="5"
+                   Height="30"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   MinWidth="300"
+                   d:Text="The Invisible Man" />
+
+          <Label Grid.Column="1"
+                 Grid.Row="6"
+                 HorizontalAlignment="Left"
+                 Margin="15,0,0,0"
+                 Content="Hire Date" />
+          <TextBox x:Name="txtHireDate"
+                   Grid.Column="2"
+                   Grid.Row="6"
+                   Height="30"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   MinWidth="300"
+                   d:Text="Tropic of Cancer" />
+
+          <Label Grid.Column="1"
+                 Grid.Row="7"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Margin="31,0,0,0"
+                 Content="Phone" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Column="2"
+                   Grid.Row="7"
+                   MinWidth="300"
+                   Margin="0,5,0,145"
+                   Grid.RowSpan="2" />
+
+          <Label Grid.Column="1"
+                 Grid.Row="8"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Margin="37,0,0,0"
+                 Content="Email" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Column="2"
+                   Grid.Row="8"
+                   MinWidth="300" />
+
+          <Label Content="Standard Issue"
+                 Grid.Row="1"
+                 Grid.Column="3"
+                 Margin="20,40,476,65" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   Width="293"
+                   Margin="20,70,0,25"
+                   Grid.RowSpan="2" />
+
+          <Label Content="Ad Hoc Assignments"
+                 Grid.Row="1"
+                 Grid.Column="3"
+                 Width="180"
+                 Margin="318,42,89,58"
+                 RenderTransformOrigin="0.483,1.868" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   Width="258"
+                   Margin="318,69,0,25"
+                   Grid.RowSpan="2" />
+
+          <Label Content="Vehicle History"
+                 Grid.Row="1"
+                 Grid.Column="4"
+                 Margin="0,42,497,62" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Row="1"
+                   Grid.Column="4"
+                   Width="321"
+                   Margin="0,69,0,0"
+                   Grid.RowSpan="8" />
+
+          <Label Content="Citations"
+                 Grid.Row="5"
+                 Grid.Column="3"
+                 Width="180"
+                 Margin="211,5,196,30" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Row="7"
+                   Grid.Column="3"
+                   Width="576"
+                   Margin="0,10,0,10" />
+
+          <Label Content="Certifications"
+                 Grid.Row="5"
+                 Grid.Column="3"
+                 Width="180"
+                 Margin="396,5,11,30" />
+          <ListBox HorizontalAlignment="Left"
+                   Grid.Row="4"
+                   Grid.RowSpan="3"
+                   Grid.Column="3"
+                   Width="576" />
+        </Grid>
+      </TabItem>
+    </TabControl>
+  </Grid>
+</Window>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WorkDesk_Library.Models;
+using WorkDesk_Library.Models.Admin_Info;
 using WorkDesk_Library.Models.Employee_Info;
 using WorkDesk_Library.Models.Equipment_Info;
 
@@ -24,6 +25,21 @@ namespace WorkDesk_Library.Connections
             throw new NotImplementedException();
         }
 
+        public List<EmployeeModel.PhoneModel> GetCertificationTypes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<DepartmentModel> GetDepartmentTypes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<EmployeeStatusModel> GetEmployeeStatusTypes()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<EmployeeModel> GetEmployee_All()
         {
             throw new NotImplementedException();
@@ -34,7 +50,22 @@ namespace WorkDesk_Library.Connections
             throw new NotImplementedException();
         }
 
+        public List<TitleModel> GetJobTitleTypes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<EmployeeModel.PhoneModel> GetPhoneTypes()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<EmployeeModel> GetSelectedEmployee(int selectedEmployeeID)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<CertificationModel> IDataConnection.GetCertificationTypes()
         {
             throw new NotImplementedException();
         }

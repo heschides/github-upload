@@ -30,37 +30,42 @@ namespace Work_Desk_Program
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dash));
             this.InventoryTab = new System.Windows.Forms.TabPage();
             this.InventoryGridView = new System.Windows.Forms.DataGridView();
             this.workDeskDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workDeskDataSet = new Work_Desk_Program.WorkDeskDataSet();
             this.EmployeeTab = new System.Windows.Forms.TabPage();
-            this.testButton = new System.Windows.Forms.Button();
-            this.getEmployeeListButton = new System.Windows.Forms.Button();
+            this.adHocAssignmentsGridView = new System.Windows.Forms.DataGridView();
+            this.certificationsGridView = new System.Windows.Forms.DataGridView();
+            this.citationsGridView = new System.Windows.Forms.DataGridView();
+            this.txtHireDate = new System.Windows.Forms.TextBox();
+            this.txtDepartment = new System.Windows.Forms.TextBox();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.phoneGridView = new System.Windows.Forms.DataGridView();
+            this.emailGridView = new System.Windows.Forms.DataGridView();
+            this.employeeGridView = new System.Windows.Forms.DataGridView();
             this.editEmployeeLabel = new System.Windows.Forms.Button();
             this.addEmployeeButton = new System.Windows.Forms.Button();
-            this.statusListbox = new System.Windows.Forms.ListBox();
             this.statusLabel = new System.Windows.Forms.Label();
             this.vehicleHistoryListbox = new System.Windows.Forms.ListBox();
             this.vehicleHistoryLabel = new System.Windows.Forms.Label();
-            this.adHocAssignmentsListbox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.standardIssueAssignmentsListbox = new System.Windows.Forms.ListBox();
             this.standardIssueAssignmentsLabel = new System.Windows.Forms.Label();
-            this.certificationsListBox = new System.Windows.Forms.ListBox();
             this.certificationsLabel = new System.Windows.Forms.Label();
-            this.citationsListBox = new System.Windows.Forms.ListBox();
             this.citationsLabel = new System.Windows.Forms.Label();
-            this.EmployeesListBox = new System.Windows.Forms.ListBox();
             this.employeeListLabel = new System.Windows.Forms.Label();
-            this.hireDateListBox = new System.Windows.Forms.ListBox();
             this.hireDateLabel = new System.Windows.Forms.Label();
-            this.jobTitleListBox = new System.Windows.Forms.ListBox();
-            this.jobTitleLabel = new System.Windows.Forms.Label();
-            this.emailListBox = new System.Windows.Forms.ListBox();
+            this.DepartmentLabel = new System.Windows.Forms.Label();
             this.emailLabel = new System.Windows.Forms.Label();
-            this.phoneListBox = new System.Windows.Forms.ListBox();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.EmployeeDetailsLabel = new System.Windows.Forms.Label();
             this.SelectDepartmentLabel = new System.Windows.Forms.Label();
@@ -88,11 +93,11 @@ namespace Work_Desk_Program
             this.getAllEmployeesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.getAllEmployeesBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.getAllEmployeesBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.getAllEmployeesTableAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phoneModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phoneModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDataConnectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -101,6 +106,12 @@ namespace Work_Desk_Program
             ((System.ComponentModel.ISupportInitialize)(this.workDeskDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workDeskDataSet)).BeginInit();
             this.EmployeeTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adHocAssignmentsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.certificationsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citationsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phoneGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emailGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getAllEmployeesBindingSource)).BeginInit();
             this.VehiclesTab.SuspendLayout();
             this.EquipmentAssignmentsTab.SuspendLayout();
@@ -153,31 +164,29 @@ namespace Work_Desk_Program
             // EmployeeTab
             // 
             this.EmployeeTab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.EmployeeTab.Controls.Add(this.testButton);
-            this.EmployeeTab.Controls.Add(this.getEmployeeListButton);
+            this.EmployeeTab.Controls.Add(this.adHocAssignmentsGridView);
+            this.EmployeeTab.Controls.Add(this.certificationsGridView);
+            this.EmployeeTab.Controls.Add(this.citationsGridView);
+            this.EmployeeTab.Controls.Add(this.txtHireDate);
+            this.EmployeeTab.Controls.Add(this.txtDepartment);
+            this.EmployeeTab.Controls.Add(this.txtStatus);
+            this.EmployeeTab.Controls.Add(this.phoneGridView);
+            this.EmployeeTab.Controls.Add(this.emailGridView);
+            this.EmployeeTab.Controls.Add(this.employeeGridView);
             this.EmployeeTab.Controls.Add(this.editEmployeeLabel);
             this.EmployeeTab.Controls.Add(this.addEmployeeButton);
-            this.EmployeeTab.Controls.Add(this.statusListbox);
             this.EmployeeTab.Controls.Add(this.statusLabel);
             this.EmployeeTab.Controls.Add(this.vehicleHistoryListbox);
             this.EmployeeTab.Controls.Add(this.vehicleHistoryLabel);
-            this.EmployeeTab.Controls.Add(this.adHocAssignmentsListbox);
             this.EmployeeTab.Controls.Add(this.label2);
             this.EmployeeTab.Controls.Add(this.standardIssueAssignmentsListbox);
             this.EmployeeTab.Controls.Add(this.standardIssueAssignmentsLabel);
-            this.EmployeeTab.Controls.Add(this.certificationsListBox);
             this.EmployeeTab.Controls.Add(this.certificationsLabel);
-            this.EmployeeTab.Controls.Add(this.citationsListBox);
             this.EmployeeTab.Controls.Add(this.citationsLabel);
-            this.EmployeeTab.Controls.Add(this.EmployeesListBox);
             this.EmployeeTab.Controls.Add(this.employeeListLabel);
-            this.EmployeeTab.Controls.Add(this.hireDateListBox);
             this.EmployeeTab.Controls.Add(this.hireDateLabel);
-            this.EmployeeTab.Controls.Add(this.jobTitleListBox);
-            this.EmployeeTab.Controls.Add(this.jobTitleLabel);
-            this.EmployeeTab.Controls.Add(this.emailListBox);
+            this.EmployeeTab.Controls.Add(this.DepartmentLabel);
             this.EmployeeTab.Controls.Add(this.emailLabel);
-            this.EmployeeTab.Controls.Add(this.phoneListBox);
             this.EmployeeTab.Controls.Add(this.phoneLabel);
             this.EmployeeTab.Controls.Add(this.EmployeeDetailsLabel);
             this.EmployeeTab.Controls.Add(this.SelectDepartmentLabel);
@@ -188,23 +197,160 @@ namespace Work_Desk_Program
             this.EmployeeTab.TabIndex = 4;
             this.EmployeeTab.Text = "Employees";
             // 
-            // testButton
+            // adHocAssignmentsGridView
             // 
-            this.testButton.Location = new System.Drawing.Point(1386, 3);
-            this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(187, 28);
-            this.testButton.TabIndex = 30;
-            this.testButton.Text = "Test Button";
-            this.testButton.UseVisualStyleBackColor = true;
+            this.adHocAssignmentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.adHocAssignmentsGridView.Location = new System.Drawing.Point(410, 105);
+            this.adHocAssignmentsGridView.Name = "adHocAssignmentsGridView";
+            this.adHocAssignmentsGridView.Size = new System.Drawing.Size(546, 153);
+            this.adHocAssignmentsGridView.TabIndex = 42;
+            this.adHocAssignmentsGridView.Leave += new System.EventHandler(this.adHocAssignmentsGridView_Leave);
             // 
-            // getEmployeeListButton
+            // certificationsGridView
             // 
-            this.getEmployeeListButton.Location = new System.Drawing.Point(74, 687);
-            this.getEmployeeListButton.Name = "getEmployeeListButton";
-            this.getEmployeeListButton.Size = new System.Drawing.Size(215, 36);
-            this.getEmployeeListButton.TabIndex = 29;
-            this.getEmployeeListButton.Text = "Get Employee List";
-            this.getEmployeeListButton.UseVisualStyleBackColor = true;
+            this.certificationsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.certificationsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.certificationsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.certificationsGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.certificationsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.certificationsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.certificationsGridView.Location = new System.Drawing.Point(410, 326);
+            this.certificationsGridView.Name = "certificationsGridView";
+            this.certificationsGridView.Size = new System.Drawing.Size(546, 173);
+            this.certificationsGridView.TabIndex = 41;
+            this.certificationsGridView.Leave += new System.EventHandler(this.certificationsGridView_Leave);
+            // 
+            // citationsGridView
+            // 
+            this.citationsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.citationsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.citationsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.citationsGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.citationsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.citationsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.citationsGridView.Location = new System.Drawing.Point(410, 519);
+            this.citationsGridView.Name = "citationsGridView";
+            this.citationsGridView.Size = new System.Drawing.Size(546, 173);
+            this.citationsGridView.TabIndex = 40;
+            this.citationsGridView.Leave += new System.EventHandler(this.citationsGridView_Leave);
+            // 
+            // txtHireDate
+            // 
+            this.txtHireDate.Location = new System.Drawing.Point(115, 357);
+            this.txtHireDate.Name = "txtHireDate";
+            this.txtHireDate.Size = new System.Drawing.Size(271, 25);
+            this.txtHireDate.TabIndex = 39;
+            // 
+            // txtDepartment
+            // 
+            this.txtDepartment.Location = new System.Drawing.Point(116, 295);
+            this.txtDepartment.Name = "txtDepartment";
+            this.txtDepartment.Size = new System.Drawing.Size(271, 25);
+            this.txtDepartment.TabIndex = 38;
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(115, 326);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(271, 25);
+            this.txtStatus.TabIndex = 37;
+            // 
+            // phoneGridView
+            // 
+            this.phoneGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.phoneGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.phoneGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.phoneGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.phoneGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.phoneGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.phoneGridView.Location = new System.Drawing.Point(114, 389);
+            this.phoneGridView.Name = "phoneGridView";
+            this.phoneGridView.Size = new System.Drawing.Size(272, 102);
+            this.phoneGridView.TabIndex = 33;
+            this.phoneGridView.Leave += new System.EventHandler(this.phoneGridView_Leave);
+            // 
+            // emailGridView
+            // 
+            this.emailGridView.AllowUserToAddRows = false;
+            this.emailGridView.AllowUserToDeleteRows = false;
+            this.emailGridView.AllowUserToResizeColumns = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.emailGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.emailGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.emailGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.emailGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.emailGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.emailGridView.DefaultCellStyle = dataGridViewCellStyle5;
+            this.emailGridView.Location = new System.Drawing.Point(115, 500);
+            this.emailGridView.Name = "emailGridView";
+            this.emailGridView.ReadOnly = true;
+            this.emailGridView.RowHeadersVisible = false;
+            this.emailGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.emailGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.emailGridView.Size = new System.Drawing.Size(272, 192);
+            this.emailGridView.TabIndex = 32;
+            this.emailGridView.Leave += new System.EventHandler(this.emailGridView_Leave);
+            // 
+            // employeeGridView
+            // 
+            this.employeeGridView.AllowUserToResizeRows = false;
+            this.employeeGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.employeeGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.employeeGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.employeeGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeeGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.employeeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeeGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this.employeeGridView.Location = new System.Drawing.Point(28, 102);
+            this.employeeGridView.Name = "employeeGridView";
+            this.employeeGridView.Size = new System.Drawing.Size(359, 157);
+            this.employeeGridView.TabIndex = 31;
+            this.employeeGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeGridView_CellClick);
+            this.employeeGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeGridView_CellClick);
             // 
             // editEmployeeLabel
             // 
@@ -223,20 +369,12 @@ namespace Work_Desk_Program
             this.addEmployeeButton.TabIndex = 27;
             this.addEmployeeButton.Text = "Add Employee";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
-            // 
-            // statusListbox
-            // 
-            this.statusListbox.FormattingEnabled = true;
-            this.statusListbox.ItemHeight = 17;
-            this.statusListbox.Location = new System.Drawing.Point(74, 542);
-            this.statusListbox.Name = "statusListbox";
-            this.statusListbox.Size = new System.Drawing.Size(215, 21);
-            this.statusListbox.TabIndex = 26;
+            this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
             // 
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(25, 544);
+            this.statusLabel.Location = new System.Drawing.Point(61, 331);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(43, 17);
             this.statusLabel.TabIndex = 25;
@@ -246,33 +384,24 @@ namespace Work_Desk_Program
             // 
             this.vehicleHistoryListbox.FormattingEnabled = true;
             this.vehicleHistoryListbox.ItemHeight = 17;
-            this.vehicleHistoryListbox.Location = new System.Drawing.Point(1397, 82);
+            this.vehicleHistoryListbox.Location = new System.Drawing.Point(971, 326);
             this.vehicleHistoryListbox.Name = "vehicleHistoryListbox";
-            this.vehicleHistoryListbox.Size = new System.Drawing.Size(168, 616);
+            this.vehicleHistoryListbox.Size = new System.Drawing.Size(537, 361);
             this.vehicleHistoryListbox.TabIndex = 24;
             // 
             // vehicleHistoryLabel
             // 
             this.vehicleHistoryLabel.AutoSize = true;
-            this.vehicleHistoryLabel.Location = new System.Drawing.Point(1394, 58);
+            this.vehicleHistoryLabel.Location = new System.Drawing.Point(968, 306);
             this.vehicleHistoryLabel.Name = "vehicleHistoryLabel";
             this.vehicleHistoryLabel.Size = new System.Drawing.Size(93, 17);
             this.vehicleHistoryLabel.TabIndex = 23;
             this.vehicleHistoryLabel.Text = "Vehicle History";
             // 
-            // adHocAssignmentsListbox
-            // 
-            this.adHocAssignmentsListbox.FormattingEnabled = true;
-            this.adHocAssignmentsListbox.ItemHeight = 17;
-            this.adHocAssignmentsListbox.Location = new System.Drawing.Point(1136, 82);
-            this.adHocAssignmentsListbox.Name = "adHocAssignmentsListbox";
-            this.adHocAssignmentsListbox.Size = new System.Drawing.Size(255, 616);
-            this.adHocAssignmentsListbox.TabIndex = 22;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1133, 58);
+            this.label2.Location = new System.Drawing.Point(407, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 17);
             this.label2.TabIndex = 21;
@@ -282,142 +411,79 @@ namespace Work_Desk_Program
             // 
             this.standardIssueAssignmentsListbox.FormattingEnabled = true;
             this.standardIssueAssignmentsListbox.ItemHeight = 17;
-            this.standardIssueAssignmentsListbox.Location = new System.Drawing.Point(875, 82);
+            this.standardIssueAssignmentsListbox.Location = new System.Drawing.Point(971, 102);
             this.standardIssueAssignmentsListbox.Name = "standardIssueAssignmentsListbox";
-            this.standardIssueAssignmentsListbox.Size = new System.Drawing.Size(255, 616);
+            this.standardIssueAssignmentsListbox.Size = new System.Drawing.Size(537, 157);
             this.standardIssueAssignmentsListbox.TabIndex = 20;
             // 
             // standardIssueAssignmentsLabel
             // 
             this.standardIssueAssignmentsLabel.AutoSize = true;
-            this.standardIssueAssignmentsLabel.Location = new System.Drawing.Point(872, 58);
+            this.standardIssueAssignmentsLabel.Location = new System.Drawing.Point(959, 82);
             this.standardIssueAssignmentsLabel.Name = "standardIssueAssignmentsLabel";
             this.standardIssueAssignmentsLabel.Size = new System.Drawing.Size(171, 17);
             this.standardIssueAssignmentsLabel.TabIndex = 19;
             this.standardIssueAssignmentsLabel.Text = "Standard Issue Assignments";
             // 
-            // certificationsListBox
-            // 
-            this.certificationsListBox.FormattingEnabled = true;
-            this.certificationsListBox.ItemHeight = 17;
-            this.certificationsListBox.Location = new System.Drawing.Point(548, 470);
-            this.certificationsListBox.Name = "certificationsListBox";
-            this.certificationsListBox.Size = new System.Drawing.Size(238, 225);
-            this.certificationsListBox.TabIndex = 18;
-            // 
             // certificationsLabel
             // 
             this.certificationsLabel.AutoSize = true;
-            this.certificationsLabel.Location = new System.Drawing.Point(545, 454);
+            this.certificationsLabel.Location = new System.Drawing.Point(407, 306);
             this.certificationsLabel.Name = "certificationsLabel";
             this.certificationsLabel.Size = new System.Drawing.Size(83, 17);
             this.certificationsLabel.TabIndex = 17;
             this.certificationsLabel.Text = "Certifications";
             // 
-            // citationsListBox
-            // 
-            this.citationsListBox.FormattingEnabled = true;
-            this.citationsListBox.ItemHeight = 17;
-            this.citationsListBox.Location = new System.Drawing.Point(318, 470);
-            this.citationsListBox.Name = "citationsListBox";
-            this.citationsListBox.Size = new System.Drawing.Size(208, 225);
-            this.citationsListBox.TabIndex = 16;
-            // 
             // citationsLabel
             // 
             this.citationsLabel.AutoSize = true;
-            this.citationsLabel.Location = new System.Drawing.Point(315, 454);
+            this.citationsLabel.Location = new System.Drawing.Point(407, 499);
             this.citationsLabel.Name = "citationsLabel";
             this.citationsLabel.Size = new System.Drawing.Size(58, 17);
             this.citationsLabel.TabIndex = 15;
             this.citationsLabel.Text = "Citations";
             // 
-            // EmployeesListBox
-            // 
-            this.EmployeesListBox.FormattingEnabled = true;
-            this.EmployeesListBox.ItemHeight = 17;
-            this.EmployeesListBox.Location = new System.Drawing.Point(19, 81);
-            this.EmployeesListBox.Name = "EmployeesListBox";
-            this.EmployeesListBox.Size = new System.Drawing.Size(839, 327);
-            this.EmployeesListBox.TabIndex = 14;
-            // 
             // employeeListLabel
             // 
             this.employeeListLabel.AutoSize = true;
-            this.employeeListLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeListLabel.Location = new System.Drawing.Point(15, 58);
+            this.employeeListLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeListLabel.Location = new System.Drawing.Point(23, 74);
             this.employeeListLabel.Name = "employeeListLabel";
-            this.employeeListLabel.Size = new System.Drawing.Size(81, 20);
+            this.employeeListLabel.Size = new System.Drawing.Size(102, 25);
             this.employeeListLabel.TabIndex = 13;
             this.employeeListLabel.Text = "Employees";
-            // 
-            // hireDateListBox
-            // 
-            this.hireDateListBox.FormattingEnabled = true;
-            this.hireDateListBox.ItemHeight = 17;
-            this.hireDateListBox.Location = new System.Drawing.Point(74, 506);
-            this.hireDateListBox.Name = "hireDateListBox";
-            this.hireDateListBox.Size = new System.Drawing.Size(215, 21);
-            this.hireDateListBox.TabIndex = 12;
             // 
             // hireDateLabel
             // 
             this.hireDateLabel.AutoSize = true;
-            this.hireDateLabel.Location = new System.Drawing.Point(10, 508);
+            this.hireDateLabel.Location = new System.Drawing.Point(42, 360);
             this.hireDateLabel.Name = "hireDateLabel";
             this.hireDateLabel.Size = new System.Drawing.Size(63, 17);
             this.hireDateLabel.TabIndex = 11;
             this.hireDateLabel.Text = "Hire Date";
             // 
-            // jobTitleListBox
+            // DepartmentLabel
             // 
-            this.jobTitleListBox.FormattingEnabled = true;
-            this.jobTitleListBox.ItemHeight = 17;
-            this.jobTitleListBox.Location = new System.Drawing.Point(74, 470);
-            this.jobTitleListBox.Name = "jobTitleListBox";
-            this.jobTitleListBox.Size = new System.Drawing.Size(215, 21);
-            this.jobTitleListBox.TabIndex = 10;
-            // 
-            // jobTitleLabel
-            // 
-            this.jobTitleLabel.AutoSize = true;
-            this.jobTitleLabel.Location = new System.Drawing.Point(15, 472);
-            this.jobTitleLabel.Name = "jobTitleLabel";
-            this.jobTitleLabel.Size = new System.Drawing.Size(57, 17);
-            this.jobTitleLabel.TabIndex = 9;
-            this.jobTitleLabel.Text = "Job Title";
-            // 
-            // emailListBox
-            // 
-            this.emailListBox.FormattingEnabled = true;
-            this.emailListBox.ItemHeight = 17;
-            this.emailListBox.Location = new System.Drawing.Point(74, 627);
-            this.emailListBox.Name = "emailListBox";
-            this.emailListBox.Size = new System.Drawing.Size(215, 55);
-            this.emailListBox.TabIndex = 8;
+            this.DepartmentLabel.AutoSize = true;
+            this.DepartmentLabel.Location = new System.Drawing.Point(33, 298);
+            this.DepartmentLabel.Name = "DepartmentLabel";
+            this.DepartmentLabel.Size = new System.Drawing.Size(77, 17);
+            this.DepartmentLabel.TabIndex = 9;
+            this.DepartmentLabel.Text = "Department";
             // 
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(30, 627);
+            this.emailLabel.Location = new System.Drawing.Point(66, 500);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(39, 17);
             this.emailLabel.TabIndex = 7;
             this.emailLabel.Text = "Email";
             // 
-            // phoneListBox
-            // 
-            this.phoneListBox.FormattingEnabled = true;
-            this.phoneListBox.ItemHeight = 17;
-            this.phoneListBox.Location = new System.Drawing.Point(74, 578);
-            this.phoneListBox.Name = "phoneListBox";
-            this.phoneListBox.Size = new System.Drawing.Size(215, 38);
-            this.phoneListBox.TabIndex = 6;
-            // 
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(24, 578);
+            this.phoneLabel.Location = new System.Drawing.Point(60, 389);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(44, 17);
             this.phoneLabel.TabIndex = 5;
@@ -427,7 +493,7 @@ namespace Work_Desk_Program
             // 
             this.EmployeeDetailsLabel.AutoSize = true;
             this.EmployeeDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeDetailsLabel.Location = new System.Drawing.Point(15, 429);
+            this.EmployeeDetailsLabel.Location = new System.Drawing.Point(24, 272);
             this.EmployeeDetailsLabel.Name = "EmployeeDetailsLabel";
             this.EmployeeDetailsLabel.Size = new System.Drawing.Size(132, 20);
             this.EmployeeDetailsLabel.TabIndex = 4;
@@ -669,18 +735,6 @@ namespace Work_Desk_Program
             this.getAllEmployeesBindingSource4.DataMember = "GetAllEmployees";
             this.getAllEmployeesBindingSource4.DataSource = this.workDeskDataSetBindingSource;
             // 
-            // getAllEmployeesTableAdapterBindingSource
-            // 
-            this.getAllEmployeesTableAdapterBindingSource.DataSource = typeof(Work_Desk_Program.WorkDeskDataSetTableAdapters.GetAllEmployeesTableAdapter);
-            // 
-            // phoneModelBindingSource
-            // 
-            this.phoneModelBindingSource.DataSource = typeof(WorkDesk_Library.Models.Employee_Info.EmployeeModel.PhoneModel);
-            // 
-            // phoneModelBindingSource1
-            // 
-            this.phoneModelBindingSource1.DataSource = typeof(WorkDesk_Library.Models.Employee_Info.EmployeeModel.PhoneModel);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Department";
@@ -692,6 +746,18 @@ namespace Work_Desk_Program
             this.dataGridViewTextBoxColumn2.DataPropertyName = "JobTitle";
             this.dataGridViewTextBoxColumn2.HeaderText = "JobTitle";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // getAllEmployeesTableAdapterBindingSource
+            // 
+            this.getAllEmployeesTableAdapterBindingSource.DataSource = typeof(Work_Desk_Program.WorkDeskDataSetTableAdapters.GetAllEmployeesTableAdapter);
+            // 
+            // phoneModelBindingSource
+            // 
+            this.phoneModelBindingSource.DataSource = typeof(WorkDesk_Library.Models.Employee_Info.EmployeeModel.PhoneModel);
+            // 
+            // phoneModelBindingSource1
+            // 
+            this.phoneModelBindingSource1.DataSource = typeof(WorkDesk_Library.Models.Employee_Info.EmployeeModel.PhoneModel);
             // 
             // employeeModelBindingSource
             // 
@@ -724,6 +790,12 @@ namespace Work_Desk_Program
             ((System.ComponentModel.ISupportInitialize)(this.workDeskDataSet)).EndInit();
             this.EmployeeTab.ResumeLayout(false);
             this.EmployeeTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adHocAssignmentsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.certificationsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citationsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phoneGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emailGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getAllEmployeesBindingSource)).EndInit();
             this.VehiclesTab.ResumeLayout(false);
             this.EquipmentAssignmentsTab.ResumeLayout(false);
@@ -784,34 +856,32 @@ namespace Work_Desk_Program
         private System.Windows.Forms.Label SelectDepartmentLabel;
         private System.Windows.Forms.ComboBox DepartmentCombobox;
         private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.ListBox phoneListBox;
         private System.Windows.Forms.Label phoneLabel;
-        private System.Windows.Forms.ListBox emailListBox;
-        private System.Windows.Forms.ListBox hireDateListBox;
         private System.Windows.Forms.Label hireDateLabel;
-        private System.Windows.Forms.ListBox jobTitleListBox;
-        private System.Windows.Forms.Label jobTitleLabel;
-        private System.Windows.Forms.ListBox citationsListBox;
+        private System.Windows.Forms.Label DepartmentLabel;
         private System.Windows.Forms.Label citationsLabel;
-        private System.Windows.Forms.ListBox EmployeesListBox;
         private System.Windows.Forms.Label employeeListLabel;
         private System.Windows.Forms.ListBox vehicleHistoryListbox;
         private System.Windows.Forms.Label vehicleHistoryLabel;
-        private System.Windows.Forms.ListBox adHocAssignmentsListbox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox standardIssueAssignmentsListbox;
         private System.Windows.Forms.Label standardIssueAssignmentsLabel;
-        private System.Windows.Forms.ListBox certificationsListBox;
         private System.Windows.Forms.Label certificationsLabel;
         private System.Windows.Forms.Button editEmployeeLabel;
         private System.Windows.Forms.Button addEmployeeButton;
-        private System.Windows.Forms.ListBox statusListbox;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.DataGridView InventoryGridView;
         private System.Windows.Forms.BindingSource equipmentModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Button getEmployeeListButton;
-        private System.Windows.Forms.Button testButton;
+        private System.Windows.Forms.DataGridView employeeGridView;
+        private System.Windows.Forms.DataGridView phoneGridView;
+        private System.Windows.Forms.DataGridView emailGridView;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.TextBox txtDepartment;
+        private System.Windows.Forms.TextBox txtHireDate;
+        private System.Windows.Forms.DataGridView citationsGridView;
+        private System.Windows.Forms.DataGridView certificationsGridView;
+        private System.Windows.Forms.DataGridView adHocAssignmentsGridView;
     }
 }

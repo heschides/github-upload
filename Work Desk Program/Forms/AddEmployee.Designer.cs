@@ -1,7 +1,7 @@
 ﻿
-namespace Work_Desk_Program
+namespace Work_Desk_Program.Forms
 {
-    partial class AddEmployee
+    partial class formAddEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -29,451 +29,516 @@ namespace Work_Desk_Program
         /// </summary>
         private void InitializeComponent()
         {
-            this.lastNameLabel = new System.Windows.Forms.Label();
-            this.FirstNameLabel = new System.Windows.Forms.Label();
-            this.LastNameValue = new System.Windows.Forms.TextBox();
-            this.FirstNameValue = new System.Windows.Forms.TextBox();
-            this.AddRecordButton = new System.Windows.Forms.Button();
-            this.NicknameValue = new System.Windows.Forms.TextBox();
-            this.DepartmentLabel = new System.Windows.Forms.Label();
-            this.NicknameLabel = new System.Windows.Forms.Label();
-            this.TitleLabel = new System.Windows.Forms.Label();
-            this.PhoneNumberLabel1 = new System.Windows.Forms.Label();
-            this.PhoneTypeLabel1 = new System.Windows.Forms.Label();
-            this.PhoneNumberLabel2 = new System.Windows.Forms.Label();
-            this.PhoneTypeLabel2 = new System.Windows.Forms.Label();
-            this.EmailTypeLabel2 = new System.Windows.Forms.Label();
-            this.EmailLabel2 = new System.Windows.Forms.Label();
-            this.EmailTypeLabel1 = new System.Windows.Forms.Label();
-            this.EmailLabel1 = new System.Windows.Forms.Label();
-            this.HireDateLabel = new System.Windows.Forms.Label();
-            this.RestrictionLabel1 = new System.Windows.Forms.Label();
-            this.DepartmentValue = new System.Windows.Forms.ComboBox();
-            this.TitleValue = new System.Windows.Forms.ComboBox();
-            this.RestrictionValue1 = new System.Windows.Forms.ComboBox();
-            this.HireDateValue = new System.Windows.Forms.TextBox();
-            this.PhoneTypeValue1 = new System.Windows.Forms.ComboBox();
-            this.PhoneNumberValue1 = new System.Windows.Forms.TextBox();
-            this.PhoneTypeValue2 = new System.Windows.Forms.ComboBox();
-            this.PhoneNumberValue2 = new System.Windows.Forms.TextBox();
-            this.EmailTypeValue1 = new System.Windows.Forms.ComboBox();
-            this.EmailValue1 = new System.Windows.Forms.TextBox();
-            this.EmailTypeValue2 = new System.Windows.Forms.ComboBox();
-            this.EmailValue2 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.RestrictionValue2 = new System.Windows.Forms.ComboBox();
-            this.RestrictionLabel2 = new System.Windows.Forms.Label();
-            this.RestrictionEndValue1 = new System.Windows.Forms.TextBox();
-            this.RestrictionEndValue2 = new System.Windows.Forms.TextBox();
-            this.RestrictionDateLabel1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
+            this.labelFirstName = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.labelDepartment = new System.Windows.Forms.Label();
+            this.labelNickName = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtNickname = new System.Windows.Forms.TextBox();
+            this.cbDepartment = new System.Windows.Forms.ComboBox();
+            this.cbJobTitle = new System.Windows.Forms.ComboBox();
+            this.labelJobTitle = new System.Windows.Forms.Label();
+            this.labelHireDate = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.listboxPhones = new System.Windows.Forms.ListBox();
+            this.listboxEmails = new System.Windows.Forms.ListBox();
+            this.btnAddPhoneRecord = new System.Windows.Forms.Button();
+            this.txtNewPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtNewEmailAddress = new System.Windows.Forms.TextBox();
+            this.btnAddEmailRecord = new System.Windows.Forms.Button();
+            this.btnAddCertificationRecord = new System.Windows.Forms.Button();
+            this.listboxCertifications = new System.Windows.Forms.ListBox();
+            this.cbNewCertificationType = new System.Windows.Forms.ComboBox();
+            this.cbNewRestrictionType = new System.Windows.Forms.ComboBox();
+            this.btnAddRestrictionRecord = new System.Windows.Forms.Button();
+            this.listboxRestrictions = new System.Windows.Forms.ListBox();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.cbNewPhoneType = new System.Windows.Forms.ComboBox();
+            this.cbNewEmailType = new System.Windows.Forms.ComboBox();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelCertifications = new System.Windows.Forms.Label();
+            this.txtNewCertificationIssueDate = new System.Windows.Forms.TextBox();
+            this.txtNewCertificationExpirationDate = new System.Windows.Forms.TextBox();
+            this.labelRestrictions = new System.Windows.Forms.Label();
+            this.txtNewRestrictionEndDate = new System.Windows.Forms.TextBox();
+            this.btnSubmitUserRecord = new System.Windows.Forms.Button();
+            this.txtHireDate = new System.Windows.Forms.TextBox();
+            this.labelNewRestrictionExpirationDate = new System.Windows.Forms.Label();
+            this.labelNewRestrictionType = new System.Windows.Forms.Label();
+            this.btnGetEmployeePicture = new System.Windows.Forms.Button();
+            this.pbEmployeePicture = new System.Windows.Forms.PictureBox();
+            this.labelCertificationIssueDate = new System.Windows.Forms.Label();
+            this.labelCertificationType = new System.Windows.Forms.Label();
+            this.labelCertificationRenewalDate = new System.Windows.Forms.Label();
+            this.listboxDocuments = new System.Windows.Forms.ListBox();
+            this.btnAttachDocuments = new System.Windows.Forms.Button();
+            this.documentsLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEmployeePicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // lastNameLabel
-            // 
-            this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.lastNameLabel.Location = new System.Drawing.Point(12, 105);
-            this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(84, 21);
-            this.lastNameLabel.TabIndex = 0;
-            this.lastNameLabel.Text = "Last Name";
-            // 
-            // FirstNameLabel
-            // 
-            this.FirstNameLabel.AutoSize = true;
-            this.FirstNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirstNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.FirstNameLabel.Location = new System.Drawing.Point(10, 133);
-            this.FirstNameLabel.Name = "FirstNameLabel";
-            this.FirstNameLabel.Size = new System.Drawing.Size(86, 21);
-            this.FirstNameLabel.TabIndex = 1;
-            this.FirstNameLabel.Text = "First Name";
-            // 
-            // LastNameValue
-            // 
-            this.LastNameValue.Location = new System.Drawing.Point(116, 108);
-            this.LastNameValue.Name = "LastNameValue";
-            this.LastNameValue.Size = new System.Drawing.Size(157, 20);
-            this.LastNameValue.TabIndex = 2;
-            // 
-            // FirstNameValue
-            // 
-            this.FirstNameValue.Location = new System.Drawing.Point(116, 134);
-            this.FirstNameValue.Name = "FirstNameValue";
-            this.FirstNameValue.Size = new System.Drawing.Size(157, 20);
-            this.FirstNameValue.TabIndex = 3;
-            // 
-            // AddRecordButton
-            // 
-            this.AddRecordButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.AddRecordButton.FlatAppearance.BorderSize = 0;
-            this.AddRecordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddRecordButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddRecordButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.AddRecordButton.Location = new System.Drawing.Point(116, 345);
-            this.AddRecordButton.Name = "AddRecordButton";
-            this.AddRecordButton.Size = new System.Drawing.Size(601, 32);
-            this.AddRecordButton.TabIndex = 4;
-            this.AddRecordButton.Text = "Submit Record";
-            this.AddRecordButton.UseVisualStyleBackColor = false;
-            this.AddRecordButton.Click += new System.EventHandler(this.AddRecordButton_Click);
-            // 
-            // NicknameValue
-            // 
-            this.NicknameValue.Location = new System.Drawing.Point(116, 161);
-            this.NicknameValue.Name = "NicknameValue";
-            this.NicknameValue.Size = new System.Drawing.Size(157, 20);
-            this.NicknameValue.TabIndex = 7;
-            // 
-            // DepartmentLabel
-            // 
-            this.DepartmentLabel.AutoSize = true;
-            this.DepartmentLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DepartmentLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.DepartmentLabel.Location = new System.Drawing.Point(3, 187);
-            this.DepartmentLabel.Name = "DepartmentLabel";
-            this.DepartmentLabel.Size = new System.Drawing.Size(93, 21);
-            this.DepartmentLabel.TabIndex = 6;
-            this.DepartmentLabel.Text = "Department";
-            // 
-            // NicknameLabel
-            // 
-            this.NicknameLabel.AutoSize = true;
-            this.NicknameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NicknameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.NicknameLabel.Location = new System.Drawing.Point(16, 160);
-            this.NicknameLabel.Name = "NicknameLabel";
-            this.NicknameLabel.Size = new System.Drawing.Size(80, 21);
-            this.NicknameLabel.TabIndex = 5;
-            this.NicknameLabel.Text = "Nickname";
-            // 
-            // TitleLabel
-            // 
-            this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.TitleLabel.Location = new System.Drawing.Point(57, 214);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(39, 21);
-            this.TitleLabel.TabIndex = 8;
-            this.TitleLabel.Text = "Title";
-            // 
-            // PhoneNumberLabel1
-            // 
-            this.PhoneNumberLabel1.AutoSize = true;
-            this.PhoneNumberLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNumberLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.PhoneNumberLabel1.Location = new System.Drawing.Point(360, 105);
-            this.PhoneNumberLabel1.Name = "PhoneNumberLabel1";
-            this.PhoneNumberLabel1.Size = new System.Drawing.Size(116, 21);
-            this.PhoneNumberLabel1.TabIndex = 9;
-            this.PhoneNumberLabel1.Text = "Phone Number";
-            // 
-            // PhoneTypeLabel1
-            // 
-            this.PhoneTypeLabel1.AutoSize = true;
-            this.PhoneTypeLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneTypeLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.PhoneTypeLabel1.Location = new System.Drawing.Point(386, 131);
-            this.PhoneTypeLabel1.Name = "PhoneTypeLabel1";
-            this.PhoneTypeLabel1.Size = new System.Drawing.Size(90, 21);
-            this.PhoneTypeLabel1.TabIndex = 11;
-            this.PhoneTypeLabel1.Text = "Phone Type";
-            // 
-            // PhoneNumberLabel2
-            // 
-            this.PhoneNumberLabel2.AutoSize = true;
-            this.PhoneNumberLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNumberLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.PhoneNumberLabel2.Location = new System.Drawing.Point(360, 158);
-            this.PhoneNumberLabel2.Name = "PhoneNumberLabel2";
-            this.PhoneNumberLabel2.Size = new System.Drawing.Size(116, 21);
-            this.PhoneNumberLabel2.TabIndex = 13;
-            this.PhoneNumberLabel2.Text = "Phone Number";
-            // 
-            // PhoneTypeLabel2
-            // 
-            this.PhoneTypeLabel2.AutoSize = true;
-            this.PhoneTypeLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneTypeLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.PhoneTypeLabel2.Location = new System.Drawing.Point(386, 184);
-            this.PhoneTypeLabel2.Name = "PhoneTypeLabel2";
-            this.PhoneTypeLabel2.Size = new System.Drawing.Size(90, 21);
-            this.PhoneTypeLabel2.TabIndex = 14;
-            this.PhoneTypeLabel2.Text = "Phone Type";
-            // 
-            // EmailTypeLabel2
-            // 
-            this.EmailTypeLabel2.AutoSize = true;
-            this.EmailTypeLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailTypeLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.EmailTypeLabel2.Location = new System.Drawing.Point(434, 293);
-            this.EmailTypeLabel2.Name = "EmailTypeLabel2";
-            this.EmailTypeLabel2.Size = new System.Drawing.Size(42, 21);
-            this.EmailTypeLabel2.TabIndex = 18;
-            this.EmailTypeLabel2.Text = "Type";
-            // 
-            // EmailLabel2
-            // 
-            this.EmailLabel2.AutoSize = true;
-            this.EmailLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.EmailLabel2.Location = new System.Drawing.Point(428, 265);
-            this.EmailLabel2.Name = "EmailLabel2";
-            this.EmailLabel2.Size = new System.Drawing.Size(48, 21);
-            this.EmailLabel2.TabIndex = 17;
-            this.EmailLabel2.Text = "Email";
-            // 
-            // EmailTypeLabel1
-            // 
-            this.EmailTypeLabel1.AutoSize = true;
-            this.EmailTypeLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailTypeLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.EmailTypeLabel1.Location = new System.Drawing.Point(434, 238);
-            this.EmailTypeLabel1.Name = "EmailTypeLabel1";
-            this.EmailTypeLabel1.Size = new System.Drawing.Size(42, 21);
-            this.EmailTypeLabel1.TabIndex = 16;
-            this.EmailTypeLabel1.Text = "Type";
-            // 
-            // EmailLabel1
-            // 
-            this.EmailLabel1.AutoSize = true;
-            this.EmailLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.EmailLabel1.Location = new System.Drawing.Point(428, 214);
-            this.EmailLabel1.Name = "EmailLabel1";
-            this.EmailLabel1.Size = new System.Drawing.Size(48, 21);
-            this.EmailLabel1.TabIndex = 15;
-            this.EmailLabel1.Text = "Email";
-            // 
-            // HireDateLabel
-            // 
-            this.HireDateLabel.AutoSize = true;
-            this.HireDateLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HireDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.HireDateLabel.Location = new System.Drawing.Point(21, 241);
-            this.HireDateLabel.Name = "HireDateLabel";
-            this.HireDateLabel.Size = new System.Drawing.Size(75, 21);
-            this.HireDateLabel.TabIndex = 19;
-            this.HireDateLabel.Text = "Hire Date";
-            // 
-            // RestrictionLabel1
-            // 
-            this.RestrictionLabel1.AutoSize = true;
-            this.RestrictionLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RestrictionLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.RestrictionLabel1.Location = new System.Drawing.Point(12, 266);
-            this.RestrictionLabel1.Name = "RestrictionLabel1";
-            this.RestrictionLabel1.Size = new System.Drawing.Size(84, 21);
-            this.RestrictionLabel1.TabIndex = 20;
-            this.RestrictionLabel1.Text = "Restriction";
-            // 
-            // DepartmentValue
-            // 
-            this.DepartmentValue.FormattingEnabled = true;
-            this.DepartmentValue.Location = new System.Drawing.Point(116, 187);
-            this.DepartmentValue.Name = "DepartmentValue";
-            this.DepartmentValue.Size = new System.Drawing.Size(157, 21);
-            this.DepartmentValue.TabIndex = 21;
-            // 
-            // TitleValue
-            // 
-            this.TitleValue.FormattingEnabled = true;
-            this.TitleValue.Location = new System.Drawing.Point(116, 214);
-            this.TitleValue.Name = "TitleValue";
-            this.TitleValue.Size = new System.Drawing.Size(157, 21);
-            this.TitleValue.TabIndex = 22;
-            // 
-            // RestrictionValue1
-            // 
-            this.RestrictionValue1.FormattingEnabled = true;
-            this.RestrictionValue1.Location = new System.Drawing.Point(116, 268);
-            this.RestrictionValue1.Name = "RestrictionValue1";
-            this.RestrictionValue1.Size = new System.Drawing.Size(157, 21);
-            this.RestrictionValue1.TabIndex = 23;
-            // 
-            // HireDateValue
-            // 
-            this.HireDateValue.Location = new System.Drawing.Point(116, 241);
-            this.HireDateValue.Name = "HireDateValue";
-            this.HireDateValue.Size = new System.Drawing.Size(157, 20);
-            this.HireDateValue.TabIndex = 24;
-            // 
-            // PhoneTypeValue1
-            // 
-            this.PhoneTypeValue1.FormattingEnabled = true;
-            this.PhoneTypeValue1.Location = new System.Drawing.Point(492, 134);
-            this.PhoneTypeValue1.Name = "PhoneTypeValue1";
-            this.PhoneTypeValue1.Size = new System.Drawing.Size(225, 21);
-            this.PhoneTypeValue1.TabIndex = 26;
-            // 
-            // PhoneNumberValue1
-            // 
-            this.PhoneNumberValue1.Location = new System.Drawing.Point(492, 108);
-            this.PhoneNumberValue1.Name = "PhoneNumberValue1";
-            this.PhoneNumberValue1.Size = new System.Drawing.Size(225, 20);
-            this.PhoneNumberValue1.TabIndex = 25;
-            // 
-            // PhoneTypeValue2
-            // 
-            this.PhoneTypeValue2.FormattingEnabled = true;
-            this.PhoneTypeValue2.Location = new System.Drawing.Point(492, 187);
-            this.PhoneTypeValue2.Name = "PhoneTypeValue2";
-            this.PhoneTypeValue2.Size = new System.Drawing.Size(225, 21);
-            this.PhoneTypeValue2.TabIndex = 28;
-            // 
-            // PhoneNumberValue2
-            // 
-            this.PhoneNumberValue2.Location = new System.Drawing.Point(492, 161);
-            this.PhoneNumberValue2.Name = "PhoneNumberValue2";
-            this.PhoneNumberValue2.Size = new System.Drawing.Size(225, 20);
-            this.PhoneNumberValue2.TabIndex = 27;
-            // 
-            // EmailTypeValue1
-            // 
-            this.EmailTypeValue1.FormattingEnabled = true;
-            this.EmailTypeValue1.Location = new System.Drawing.Point(492, 240);
-            this.EmailTypeValue1.Name = "EmailTypeValue1";
-            this.EmailTypeValue1.Size = new System.Drawing.Size(225, 21);
-            this.EmailTypeValue1.TabIndex = 30;
-            // 
-            // EmailValue1
-            // 
-            this.EmailValue1.Location = new System.Drawing.Point(492, 214);
-            this.EmailValue1.Name = "EmailValue1";
-            this.EmailValue1.Size = new System.Drawing.Size(225, 20);
-            this.EmailValue1.TabIndex = 29;
-            // 
-            // EmailTypeValue2
-            // 
-            this.EmailTypeValue2.FormattingEnabled = true;
-            this.EmailTypeValue2.Location = new System.Drawing.Point(492, 293);
-            this.EmailTypeValue2.Name = "EmailTypeValue2";
-            this.EmailTypeValue2.Size = new System.Drawing.Size(225, 21);
-            this.EmailTypeValue2.TabIndex = 32;
-            // 
-            // EmailValue2
-            // 
-            this.EmailValue2.Location = new System.Drawing.Point(492, 267);
-            this.EmailValue2.Name = "EmailValue2";
-            this.EmailValue2.Size = new System.Drawing.Size(225, 20);
-            this.EmailValue2.TabIndex = 31;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Coral;
-            this.label14.Location = new System.Drawing.Point(12, 24);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(422, 40);
-            this.label14.TabIndex = 33;
-            this.label14.Text = "Create A New Employee Record";
-            // 
-            // RestrictionValue2
-            // 
-            this.RestrictionValue2.FormattingEnabled = true;
-            this.RestrictionValue2.Location = new System.Drawing.Point(116, 295);
-            this.RestrictionValue2.Name = "RestrictionValue2";
-            this.RestrictionValue2.Size = new System.Drawing.Size(157, 21);
-            this.RestrictionValue2.TabIndex = 35;
-            // 
-            // RestrictionLabel2
-            // 
-            this.RestrictionLabel2.AutoSize = true;
-            this.RestrictionLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RestrictionLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.RestrictionLabel2.Location = new System.Drawing.Point(12, 295);
-            this.RestrictionLabel2.Name = "RestrictionLabel2";
-            this.RestrictionLabel2.Size = new System.Drawing.Size(84, 21);
-            this.RestrictionLabel2.TabIndex = 34;
-            this.RestrictionLabel2.Text = "Restriction";
-            // 
-            // RestrictionEndValue1
-            // 
-            this.RestrictionEndValue1.Location = new System.Drawing.Point(350, 270);
-            this.RestrictionEndValue1.Name = "RestrictionEndValue1";
-            this.RestrictionEndValue1.Size = new System.Drawing.Size(58, 20);
-            this.RestrictionEndValue1.TabIndex = 36;
-            // 
-            // RestrictionEndValue2
-            // 
-            this.RestrictionEndValue2.Location = new System.Drawing.Point(350, 296);
-            this.RestrictionEndValue2.Name = "RestrictionEndValue2";
-            this.RestrictionEndValue2.Size = new System.Drawing.Size(58, 20);
-            this.RestrictionEndValue2.TabIndex = 37;
-            // 
-            // RestrictionDateLabel1
-            // 
-            this.RestrictionDateLabel1.AutoSize = true;
-            this.RestrictionDateLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RestrictionDateLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.RestrictionDateLabel1.Location = new System.Drawing.Point(283, 270);
-            this.RestrictionDateLabel1.Name = "RestrictionDateLabel1";
-            this.RestrictionDateLabel1.Size = new System.Drawing.Size(61, 17);
-            this.RestrictionDateLabel1.TabIndex = 38;
-            this.RestrictionDateLabel1.Text = "End Date";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(253)))));
-            this.label1.Location = new System.Drawing.Point(283, 293);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "End Date";
-            // 
-            // AddEmployee
+            // labelHeader
+            // 
+            this.labelHeader.AutoSize = true;
+            this.labelHeader.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeader.Location = new System.Drawing.Point(49, 18);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(221, 30);
+            this.labelHeader.TabIndex = 0;
+            this.labelHeader.Text = "New Employee Record";
+            // 
+            // labelFirstName
+            // 
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Location = new System.Drawing.Point(43, 66);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(57, 13);
+            this.labelFirstName.TabIndex = 1;
+            this.labelFirstName.Text = "First Name";
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(42, 92);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(58, 13);
+            this.labelLastName.TabIndex = 2;
+            this.labelLastName.Text = "Last Name";
+            // 
+            // labelDepartment
+            // 
+            this.labelDepartment.AutoSize = true;
+            this.labelDepartment.Location = new System.Drawing.Point(38, 199);
+            this.labelDepartment.Name = "labelDepartment";
+            this.labelDepartment.Size = new System.Drawing.Size(62, 13);
+            this.labelDepartment.TabIndex = 4;
+            this.labelDepartment.Text = "Department";
+            // 
+            // labelNickName
+            // 
+            this.labelNickName.AutoSize = true;
+            this.labelNickName.Location = new System.Drawing.Point(45, 119);
+            this.labelNickName.Name = "labelNickName";
+            this.labelNickName.Size = new System.Drawing.Size(55, 13);
+            this.labelNickName.TabIndex = 3;
+            this.labelNickName.Text = "Nickname";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(106, 64);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(264, 20);
+            this.txtFirstName.TabIndex = 5;
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Location = new System.Drawing.Point(106, 90);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(264, 20);
+            this.txtLastName.TabIndex = 6;
+            // 
+            // txtNickname
+            // 
+            this.txtNickname.Location = new System.Drawing.Point(106, 117);
+            this.txtNickname.Name = "txtNickname";
+            this.txtNickname.Size = new System.Drawing.Size(264, 20);
+            this.txtNickname.TabIndex = 7;
+            // 
+            // cbDepartment
+            // 
+            this.cbDepartment.FormattingEnabled = true;
+            this.cbDepartment.Location = new System.Drawing.Point(106, 196);
+            this.cbDepartment.Name = "cbDepartment";
+            this.cbDepartment.Size = new System.Drawing.Size(264, 21);
+            this.cbDepartment.TabIndex = 8;
+            // 
+            // cbJobTitle
+            // 
+            this.cbJobTitle.FormattingEnabled = true;
+            this.cbJobTitle.Location = new System.Drawing.Point(106, 227);
+            this.cbJobTitle.Name = "cbJobTitle";
+            this.cbJobTitle.Size = new System.Drawing.Size(264, 21);
+            this.cbJobTitle.TabIndex = 10;
+            // 
+            // labelJobTitle
+            // 
+            this.labelJobTitle.AutoSize = true;
+            this.labelJobTitle.Location = new System.Drawing.Point(53, 230);
+            this.labelJobTitle.Name = "labelJobTitle";
+            this.labelJobTitle.Size = new System.Drawing.Size(47, 13);
+            this.labelJobTitle.TabIndex = 9;
+            this.labelJobTitle.Text = "Job Title";
+            // 
+            // labelHireDate
+            // 
+            this.labelHireDate.AutoSize = true;
+            this.labelHireDate.Location = new System.Drawing.Point(48, 146);
+            this.labelHireDate.Name = "labelHireDate";
+            this.labelHireDate.Size = new System.Drawing.Size(52, 13);
+            this.labelHireDate.TabIndex = 11;
+            this.labelHireDate.Text = "Hire Date";
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(106, 169);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(264, 21);
+            this.cbStatus.TabIndex = 14;
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(63, 171);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(37, 13);
+            this.labelStatus.TabIndex = 13;
+            this.labelStatus.Text = "Status";
+            // 
+            // listboxPhones
+            // 
+            this.listboxPhones.FormattingEnabled = true;
+            this.listboxPhones.Location = new System.Drawing.Point(107, 340);
+            this.listboxPhones.Name = "listboxPhones";
+            this.listboxPhones.Size = new System.Drawing.Size(264, 82);
+            this.listboxPhones.TabIndex = 15;
+            // 
+            // listboxEmails
+            // 
+            this.listboxEmails.FormattingEnabled = true;
+            this.listboxEmails.Location = new System.Drawing.Point(393, 340);
+            this.listboxEmails.Name = "listboxEmails";
+            this.listboxEmails.Size = new System.Drawing.Size(315, 82);
+            this.listboxEmails.TabIndex = 16;
+            // 
+            // btnAddPhoneRecord
+            // 
+            this.btnAddPhoneRecord.Location = new System.Drawing.Point(207, 310);
+            this.btnAddPhoneRecord.Name = "btnAddPhoneRecord";
+            this.btnAddPhoneRecord.Size = new System.Drawing.Size(164, 21);
+            this.btnAddPhoneRecord.TabIndex = 17;
+            this.btnAddPhoneRecord.Text = "Add Phone Record";
+            this.btnAddPhoneRecord.UseVisualStyleBackColor = true;
+            this.btnAddPhoneRecord.Click += new System.EventHandler(this.btnAddPhoneRecord_Click);
+            // 
+            // txtNewPhoneNumber
+            // 
+            this.txtNewPhoneNumber.Location = new System.Drawing.Point(106, 287);
+            this.txtNewPhoneNumber.Name = "txtNewPhoneNumber";
+            this.txtNewPhoneNumber.Size = new System.Drawing.Size(264, 20);
+            this.txtNewPhoneNumber.TabIndex = 18;
+            // 
+            // txtNewEmailAddress
+            // 
+            this.txtNewEmailAddress.Location = new System.Drawing.Point(393, 287);
+            this.txtNewEmailAddress.Name = "txtNewEmailAddress";
+            this.txtNewEmailAddress.Size = new System.Drawing.Size(314, 20);
+            this.txtNewEmailAddress.TabIndex = 20;
+            // 
+            // btnAddEmailRecord
+            // 
+            this.btnAddEmailRecord.Location = new System.Drawing.Point(518, 309);
+            this.btnAddEmailRecord.Name = "btnAddEmailRecord";
+            this.btnAddEmailRecord.Size = new System.Drawing.Size(192, 22);
+            this.btnAddEmailRecord.TabIndex = 19;
+            this.btnAddEmailRecord.Text = "Add Email Record";
+            this.btnAddEmailRecord.UseVisualStyleBackColor = true;
+            this.btnAddEmailRecord.Click += new System.EventHandler(this.btnAddEmailRecord_Click);
+            // 
+            // btnAddCertificationRecord
+            // 
+            this.btnAddCertificationRecord.Location = new System.Drawing.Point(107, 539);
+            this.btnAddCertificationRecord.Name = "btnAddCertificationRecord";
+            this.btnAddCertificationRecord.Size = new System.Drawing.Size(264, 26);
+            this.btnAddCertificationRecord.TabIndex = 22;
+            this.btnAddCertificationRecord.Text = "Add Certification Record";
+            this.btnAddCertificationRecord.UseVisualStyleBackColor = true;
+            this.btnAddCertificationRecord.Click += new System.EventHandler(this.btnAddCertificationRecord_Click);
+            // 
+            // listboxCertifications
+            // 
+            this.listboxCertifications.FormattingEnabled = true;
+            this.listboxCertifications.Location = new System.Drawing.Point(393, 457);
+            this.listboxCertifications.Name = "listboxCertifications";
+            this.listboxCertifications.Size = new System.Drawing.Size(315, 108);
+            this.listboxCertifications.TabIndex = 21;
+            // 
+            // cbNewCertificationType
+            // 
+            this.cbNewCertificationType.FormattingEnabled = true;
+            this.cbNewCertificationType.Location = new System.Drawing.Point(107, 457);
+            this.cbNewCertificationType.Name = "cbNewCertificationType";
+            this.cbNewCertificationType.Size = new System.Drawing.Size(264, 21);
+            this.cbNewCertificationType.TabIndex = 23;
+            // 
+            // cbNewRestrictionType
+            // 
+            this.cbNewRestrictionType.FormattingEnabled = true;
+            this.cbNewRestrictionType.Location = new System.Drawing.Point(107, 601);
+            this.cbNewRestrictionType.Name = "cbNewRestrictionType";
+            this.cbNewRestrictionType.Size = new System.Drawing.Size(264, 21);
+            this.cbNewRestrictionType.TabIndex = 26;
+            // 
+            // btnAddRestrictionRecord
+            // 
+            this.btnAddRestrictionRecord.Location = new System.Drawing.Point(107, 659);
+            this.btnAddRestrictionRecord.Name = "btnAddRestrictionRecord";
+            this.btnAddRestrictionRecord.Size = new System.Drawing.Size(264, 24);
+            this.btnAddRestrictionRecord.TabIndex = 25;
+            this.btnAddRestrictionRecord.Text = "Add Restriction Record";
+            this.btnAddRestrictionRecord.UseVisualStyleBackColor = true;
+            this.btnAddRestrictionRecord.Click += new System.EventHandler(this.btnAddRestrictionRecord_Click);
+            // 
+            // listboxRestrictions
+            // 
+            this.listboxRestrictions.FormattingEnabled = true;
+            this.listboxRestrictions.Location = new System.Drawing.Point(393, 601);
+            this.listboxRestrictions.Name = "listboxRestrictions";
+            this.listboxRestrictions.Size = new System.Drawing.Size(316, 82);
+            this.listboxRestrictions.TabIndex = 24;
+            // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPhone.Location = new System.Drawing.Point(108, 267);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(47, 16);
+            this.labelPhone.TabIndex = 30;
+            this.labelPhone.Text = "Phone";
+            // 
+            // cbNewPhoneType
+            // 
+            this.cbNewPhoneType.FormattingEnabled = true;
+            this.cbNewPhoneType.Location = new System.Drawing.Point(106, 310);
+            this.cbNewPhoneType.Name = "cbNewPhoneType";
+            this.cbNewPhoneType.Size = new System.Drawing.Size(95, 21);
+            this.cbNewPhoneType.TabIndex = 31;
+            // 
+            // cbNewEmailType
+            // 
+            this.cbNewEmailType.FormattingEnabled = true;
+            this.cbNewEmailType.Location = new System.Drawing.Point(393, 310);
+            this.cbNewEmailType.Name = "cbNewEmailType";
+            this.cbNewEmailType.Size = new System.Drawing.Size(116, 21);
+            this.cbNewEmailType.TabIndex = 32;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.Location = new System.Drawing.Point(390, 267);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(42, 16);
+            this.labelEmail.TabIndex = 33;
+            this.labelEmail.Text = "Email";
+            // 
+            // labelCertifications
+            // 
+            this.labelCertifications.AutoSize = true;
+            this.labelCertifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCertifications.Location = new System.Drawing.Point(104, 438);
+            this.labelCertifications.Name = "labelCertifications";
+            this.labelCertifications.Size = new System.Drawing.Size(84, 16);
+            this.labelCertifications.TabIndex = 34;
+            this.labelCertifications.Text = "Certifications";
+            // 
+            // txtNewCertificationIssueDate
+            // 
+            this.txtNewCertificationIssueDate.Location = new System.Drawing.Point(107, 483);
+            this.txtNewCertificationIssueDate.Name = "txtNewCertificationIssueDate";
+            this.txtNewCertificationIssueDate.Size = new System.Drawing.Size(264, 20);
+            this.txtNewCertificationIssueDate.TabIndex = 35;
+            // 
+            // txtNewCertificationExpirationDate
+            // 
+            this.txtNewCertificationExpirationDate.Location = new System.Drawing.Point(107, 509);
+            this.txtNewCertificationExpirationDate.Name = "txtNewCertificationExpirationDate";
+            this.txtNewCertificationExpirationDate.Size = new System.Drawing.Size(264, 20);
+            this.txtNewCertificationExpirationDate.TabIndex = 36;
+            // 
+            // labelRestrictions
+            // 
+            this.labelRestrictions.AutoSize = true;
+            this.labelRestrictions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRestrictions.Location = new System.Drawing.Point(110, 582);
+            this.labelRestrictions.Name = "labelRestrictions";
+            this.labelRestrictions.Size = new System.Drawing.Size(78, 16);
+            this.labelRestrictions.TabIndex = 37;
+            this.labelRestrictions.Text = "Restrictions";
+            // 
+            // txtNewRestrictionEndDate
+            // 
+            this.txtNewRestrictionEndDate.Location = new System.Drawing.Point(107, 628);
+            this.txtNewRestrictionEndDate.Name = "txtNewRestrictionEndDate";
+            this.txtNewRestrictionEndDate.Size = new System.Drawing.Size(264, 20);
+            this.txtNewRestrictionEndDate.TabIndex = 38;
+            // 
+            // btnSubmitUserRecord
+            // 
+            this.btnSubmitUserRecord.Location = new System.Drawing.Point(112, 830);
+            this.btnSubmitUserRecord.Name = "btnSubmitUserRecord";
+            this.btnSubmitUserRecord.Size = new System.Drawing.Size(600, 25);
+            this.btnSubmitUserRecord.TabIndex = 39;
+            this.btnSubmitUserRecord.Text = "Submit New User Record";
+            this.btnSubmitUserRecord.UseVisualStyleBackColor = true;
+            // 
+            // txtHireDate
+            // 
+            this.txtHireDate.Location = new System.Drawing.Point(106, 143);
+            this.txtHireDate.Name = "txtHireDate";
+            this.txtHireDate.Size = new System.Drawing.Size(264, 20);
+            this.txtHireDate.TabIndex = 40;
+            // 
+            // labelNewRestrictionExpirationDate
+            // 
+            this.labelNewRestrictionExpirationDate.AutoSize = true;
+            this.labelNewRestrictionExpirationDate.Location = new System.Drawing.Point(22, 630);
+            this.labelNewRestrictionExpirationDate.Name = "labelNewRestrictionExpirationDate";
+            this.labelNewRestrictionExpirationDate.Size = new System.Drawing.Size(79, 13);
+            this.labelNewRestrictionExpirationDate.TabIndex = 46;
+            this.labelNewRestrictionExpirationDate.Text = "Expiration Date";
+            // 
+            // labelNewRestrictionType
+            // 
+            this.labelNewRestrictionType.AutoSize = true;
+            this.labelNewRestrictionType.Location = new System.Drawing.Point(17, 604);
+            this.labelNewRestrictionType.Name = "labelNewRestrictionType";
+            this.labelNewRestrictionType.Size = new System.Drawing.Size(84, 13);
+            this.labelNewRestrictionType.TabIndex = 45;
+            this.labelNewRestrictionType.Text = "Restriction Type";
+            // 
+            // btnGetEmployeePicture
+            // 
+            this.btnGetEmployeePicture.Location = new System.Drawing.Point(433, 227);
+            this.btnGetEmployeePicture.Name = "btnGetEmployeePicture";
+            this.btnGetEmployeePicture.Size = new System.Drawing.Size(236, 21);
+            this.btnGetEmployeePicture.TabIndex = 48;
+            this.btnGetEmployeePicture.Text = "Select Photo";
+            this.btnGetEmployeePicture.UseVisualStyleBackColor = true;
+            // 
+            // pbEmployeePicture
+            // 
+            this.pbEmployeePicture.Image = global::Work_Desk_Program.Properties.Resources.defaultUserImage3;
+            this.pbEmployeePicture.InitialImage = global::Work_Desk_Program.Properties.Resources.defaultUserImage;
+            this.pbEmployeePicture.Location = new System.Drawing.Point(433, 21);
+            this.pbEmployeePicture.Name = "pbEmployeePicture";
+            this.pbEmployeePicture.Size = new System.Drawing.Size(236, 201);
+            this.pbEmployeePicture.TabIndex = 47;
+            this.pbEmployeePicture.TabStop = false;
+            // 
+            // labelCertificationIssueDate
+            // 
+            this.labelCertificationIssueDate.AutoSize = true;
+            this.labelCertificationIssueDate.Location = new System.Drawing.Point(43, 482);
+            this.labelCertificationIssueDate.Name = "labelCertificationIssueDate";
+            this.labelCertificationIssueDate.Size = new System.Drawing.Size(58, 13);
+            this.labelCertificationIssueDate.TabIndex = 50;
+            this.labelCertificationIssueDate.Text = "Issue Date";
+            // 
+            // labelCertificationType
+            // 
+            this.labelCertificationType.AutoSize = true;
+            this.labelCertificationType.Location = new System.Drawing.Point(12, 457);
+            this.labelCertificationType.Name = "labelCertificationType";
+            this.labelCertificationType.Size = new System.Drawing.Size(89, 13);
+            this.labelCertificationType.TabIndex = 49;
+            this.labelCertificationType.Text = "Certification Type";
+            // 
+            // labelCertificationRenewalDate
+            // 
+            this.labelCertificationRenewalDate.AutoSize = true;
+            this.labelCertificationRenewalDate.Location = new System.Drawing.Point(26, 509);
+            this.labelCertificationRenewalDate.Name = "labelCertificationRenewalDate";
+            this.labelCertificationRenewalDate.Size = new System.Drawing.Size(75, 13);
+            this.labelCertificationRenewalDate.TabIndex = 51;
+            this.labelCertificationRenewalDate.Text = "Renewal Date";
+            // 
+            // listboxDocuments
+            // 
+            this.listboxDocuments.FormattingEnabled = true;
+            this.listboxDocuments.Location = new System.Drawing.Point(107, 754);
+            this.listboxDocuments.Name = "listboxDocuments";
+            this.listboxDocuments.Size = new System.Drawing.Size(603, 69);
+            this.listboxDocuments.TabIndex = 53;
+            // 
+            // btnAttachDocuments
+            // 
+            this.btnAttachDocuments.Location = new System.Drawing.Point(107, 724);
+            this.btnAttachDocuments.Name = "btnAttachDocuments";
+            this.btnAttachDocuments.Size = new System.Drawing.Size(112, 24);
+            this.btnAttachDocuments.TabIndex = 54;
+            this.btnAttachDocuments.Text = "Add Document";
+            this.btnAttachDocuments.UseVisualStyleBackColor = true;
+            // 
+            // documentsLabel
+            // 
+            this.documentsLabel.AutoSize = true;
+            this.documentsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.documentsLabel.Location = new System.Drawing.Point(110, 705);
+            this.documentsLabel.Name = "documentsLabel";
+            this.documentsLabel.Size = new System.Drawing.Size(92, 16);
+            this.documentsLabel.TabIndex = 55;
+            this.documentsLabel.Text = "Document List";
+            // 
+            // formAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(765, 403);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.RestrictionDateLabel1);
-            this.Controls.Add(this.RestrictionEndValue2);
-            this.Controls.Add(this.RestrictionEndValue1);
-            this.Controls.Add(this.RestrictionValue2);
-            this.Controls.Add(this.RestrictionLabel2);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.EmailTypeValue2);
-            this.Controls.Add(this.EmailValue2);
-            this.Controls.Add(this.EmailTypeValue1);
-            this.Controls.Add(this.EmailValue1);
-            this.Controls.Add(this.PhoneTypeValue2);
-            this.Controls.Add(this.PhoneNumberValue2);
-            this.Controls.Add(this.PhoneTypeValue1);
-            this.Controls.Add(this.PhoneNumberValue1);
-            this.Controls.Add(this.HireDateValue);
-            this.Controls.Add(this.RestrictionValue1);
-            this.Controls.Add(this.TitleValue);
-            this.Controls.Add(this.DepartmentValue);
-            this.Controls.Add(this.RestrictionLabel1);
-            this.Controls.Add(this.HireDateLabel);
-            this.Controls.Add(this.EmailTypeLabel2);
-            this.Controls.Add(this.EmailLabel2);
-            this.Controls.Add(this.EmailTypeLabel1);
-            this.Controls.Add(this.EmailLabel1);
-            this.Controls.Add(this.PhoneTypeLabel2);
-            this.Controls.Add(this.PhoneNumberLabel2);
-            this.Controls.Add(this.PhoneTypeLabel1);
-            this.Controls.Add(this.PhoneNumberLabel1);
-            this.Controls.Add(this.TitleLabel);
-            this.Controls.Add(this.NicknameValue);
-            this.Controls.Add(this.DepartmentLabel);
-            this.Controls.Add(this.NicknameLabel);
-            this.Controls.Add(this.AddRecordButton);
-            this.Controls.Add(this.FirstNameValue);
-            this.Controls.Add(this.LastNameValue);
-            this.Controls.Add(this.FirstNameLabel);
-            this.Controls.Add(this.lastNameLabel);
-            this.Name = "AddEmployee";
-            this.Text = "New Employee";
-            this.Load += new System.EventHandler(this.AddEmployee_Load);
+            this.ClientSize = new System.Drawing.Size(757, 886);
+            this.Controls.Add(this.documentsLabel);
+            this.Controls.Add(this.btnAttachDocuments);
+            this.Controls.Add(this.listboxDocuments);
+            this.Controls.Add(this.labelCertificationRenewalDate);
+            this.Controls.Add(this.labelCertificationIssueDate);
+            this.Controls.Add(this.labelCertificationType);
+            this.Controls.Add(this.btnGetEmployeePicture);
+            this.Controls.Add(this.pbEmployeePicture);
+            this.Controls.Add(this.labelNewRestrictionExpirationDate);
+            this.Controls.Add(this.labelNewRestrictionType);
+            this.Controls.Add(this.txtHireDate);
+            this.Controls.Add(this.btnSubmitUserRecord);
+            this.Controls.Add(this.txtNewRestrictionEndDate);
+            this.Controls.Add(this.labelRestrictions);
+            this.Controls.Add(this.txtNewCertificationExpirationDate);
+            this.Controls.Add(this.txtNewCertificationIssueDate);
+            this.Controls.Add(this.labelCertifications);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.cbNewEmailType);
+            this.Controls.Add(this.cbNewPhoneType);
+            this.Controls.Add(this.labelPhone);
+            this.Controls.Add(this.cbNewRestrictionType);
+            this.Controls.Add(this.btnAddRestrictionRecord);
+            this.Controls.Add(this.listboxRestrictions);
+            this.Controls.Add(this.cbNewCertificationType);
+            this.Controls.Add(this.btnAddCertificationRecord);
+            this.Controls.Add(this.listboxCertifications);
+            this.Controls.Add(this.txtNewEmailAddress);
+            this.Controls.Add(this.btnAddEmailRecord);
+            this.Controls.Add(this.txtNewPhoneNumber);
+            this.Controls.Add(this.btnAddPhoneRecord);
+            this.Controls.Add(this.listboxEmails);
+            this.Controls.Add(this.listboxPhones);
+            this.Controls.Add(this.cbStatus);
+            this.Controls.Add(this.labelStatus);
+            this.Controls.Add(this.labelHireDate);
+            this.Controls.Add(this.cbJobTitle);
+            this.Controls.Add(this.labelJobTitle);
+            this.Controls.Add(this.cbDepartment);
+            this.Controls.Add(this.txtNickname);
+            this.Controls.Add(this.txtLastName);
+            this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.labelDepartment);
+            this.Controls.Add(this.labelNickName);
+            this.Controls.Add(this.labelLastName);
+            this.Controls.Add(this.labelFirstName);
+            this.Controls.Add(this.labelHeader);
+            this.Name = "formAddEmployee";
+            this.Text = "AddEmployee";
+            this.Load += new System.EventHandler(this.formAddEmployee_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbEmployeePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,43 +546,52 @@ namespace Work_Desk_Program
 
         #endregion
 
-        private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.Label FirstNameLabel;
-        private System.Windows.Forms.TextBox LastNameValue;
-        private System.Windows.Forms.TextBox FirstNameValue;
-        private System.Windows.Forms.Button AddRecordButton;
-        private System.Windows.Forms.TextBox NicknameValue;
-        private System.Windows.Forms.Label DepartmentLabel;
-        private System.Windows.Forms.Label NicknameLabel;
-        private System.Windows.Forms.Label TitleLabel;
-        private System.Windows.Forms.Label PhoneNumberLabel1;
-        private System.Windows.Forms.Label PhoneTypeLabel1;
-        private System.Windows.Forms.Label PhoneNumberLabel2;
-        private System.Windows.Forms.Label PhoneTypeLabel2;
-        private System.Windows.Forms.Label EmailTypeLabel2;
-        private System.Windows.Forms.Label EmailLabel2;
-        private System.Windows.Forms.Label EmailTypeLabel1;
-        private System.Windows.Forms.Label EmailLabel1;
-        private System.Windows.Forms.Label HireDateLabel;
-        private System.Windows.Forms.Label RestrictionLabel1;
-        private System.Windows.Forms.ComboBox DepartmentValue;
-        private System.Windows.Forms.ComboBox TitleValue;
-        private System.Windows.Forms.ComboBox RestrictionValue1;
-        private System.Windows.Forms.TextBox HireDateValue;
-        private System.Windows.Forms.ComboBox PhoneTypeValue1;
-        private System.Windows.Forms.TextBox PhoneNumberValue1;
-        private System.Windows.Forms.ComboBox PhoneTypeValue2;
-        private System.Windows.Forms.TextBox PhoneNumberValue2;
-        private System.Windows.Forms.ComboBox EmailTypeValue1;
-        private System.Windows.Forms.TextBox EmailValue1;
-        private System.Windows.Forms.ComboBox EmailTypeValue2;
-        private System.Windows.Forms.TextBox EmailValue2;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox RestrictionValue2;
-        private System.Windows.Forms.Label RestrictionLabel2;
-        private System.Windows.Forms.TextBox RestrictionEndValue1;
-        private System.Windows.Forms.TextBox RestrictionEndValue2;
-        private System.Windows.Forms.Label RestrictionDateLabel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelHeader;
+        private System.Windows.Forms.Label labelFirstName;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label labelDepartment;
+        private System.Windows.Forms.Label labelNickName;
+        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtNickname;
+        private System.Windows.Forms.ComboBox cbDepartment;
+        private System.Windows.Forms.ComboBox cbJobTitle;
+        private System.Windows.Forms.Label labelJobTitle;
+        private System.Windows.Forms.Label labelHireDate;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.ListBox listboxPhones;
+        private System.Windows.Forms.ListBox listboxEmails;
+        private System.Windows.Forms.Button btnAddPhoneRecord;
+        private System.Windows.Forms.TextBox txtNewPhoneNumber;
+        private System.Windows.Forms.TextBox txtNewEmailAddress;
+        private System.Windows.Forms.Button btnAddEmailRecord;
+        private System.Windows.Forms.Button btnAddCertificationRecord;
+        private System.Windows.Forms.ListBox listboxCertifications;
+        private System.Windows.Forms.ComboBox cbNewCertificationType;
+        private System.Windows.Forms.ComboBox cbNewRestrictionType;
+        private System.Windows.Forms.Button btnAddRestrictionRecord;
+        private System.Windows.Forms.ListBox listboxRestrictions;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.ComboBox cbNewPhoneType;
+        private System.Windows.Forms.ComboBox cbNewEmailType;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelCertifications;
+        private System.Windows.Forms.TextBox txtNewCertificationIssueDate;
+        private System.Windows.Forms.TextBox txtNewCertificationExpirationDate;
+        private System.Windows.Forms.Label labelRestrictions;
+        private System.Windows.Forms.TextBox txtNewRestrictionEndDate;
+        private System.Windows.Forms.Button btnSubmitUserRecord;
+        private System.Windows.Forms.TextBox txtHireDate;
+        private System.Windows.Forms.Label labelNewRestrictionExpirationDate;
+        private System.Windows.Forms.Label labelNewRestrictionType;
+        private System.Windows.Forms.PictureBox pbEmployeePicture;
+        private System.Windows.Forms.Button btnGetEmployeePicture;
+        private System.Windows.Forms.Label labelCertificationIssueDate;
+        private System.Windows.Forms.Label labelCertificationType;
+        private System.Windows.Forms.Label labelCertificationRenewalDate;
+        private System.Windows.Forms.ListBox listboxDocuments;
+        private System.Windows.Forms.Button btnAttachDocuments;
+        private System.Windows.Forms.Label documentsLabel;
     }
 }

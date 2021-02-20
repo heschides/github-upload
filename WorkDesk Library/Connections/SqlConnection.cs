@@ -16,7 +16,7 @@ namespace WorkDesk_Library.Connections
     class SqlConnection : IDataConnection
     {
 
-        public EmployeeModel CreateEmployee(EmployeeModel NewEmployeeRecord) 
+        public EmployeeModel CreateEmployee(EmployeeModel NewEmployeeRecord)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
 
@@ -26,7 +26,7 @@ namespace WorkDesk_Library.Connections
                 p.Add("@FirstName", NewEmployeeRecord.FirstName);
                 p.Add("@HireDate", NewEmployeeRecord.HireDate);
                 p.Add("@Email", NewEmployeeRecord.EmailList);
-                p.Add("@Phone", NewEmployeeRecord.PhoneList);
+                p.Add("@Phone", NewEmployeeRecord.PhoneList); 
                 p.Add("@Nickname", NewEmployeeRecord.Nickname);
                 p.Add("@JobTitleID", NewEmployeeRecord.JobTitle);
                 p.Add(@"Department", NewEmployeeRecord.Department);
@@ -132,117 +132,173 @@ namespace WorkDesk_Library.Connections
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
             {
-                var sql = @"SELECT e.id, e.FirstName, e.LastName, e.Nickname,
-                                   em.EmployeeID, em.Address, em.Type, 
-                                   e.JobTitleID, jt.id, jt.Name, 
-                                   p.EmployeeID, p.Number, p.Type,
-                                   ect.EmployeeID, ect.NameID, ect.InitialDate, ect.ExpirationDate,
-                                   ct.id, ct.Name,
-                                   ecit.EmployeeID, ecit.CitationTypeID, ecit.Description, ecit.Date,
-                                   cit.id, cit.Name,
-                                   e.DepartmentID, d.DepartmentName
-                                   
+                var sql = @"SELECT e.id, e.FirstName, e.LastName, e.Nickname, e.HireDate,
+                                em.id as ID, em.Address, em.Type, 
+                                jt.id as ID, jt.Name, 
+                                p.id as ID, p.Number, p.Type,
+                                d.id as ID, d.Name,
+                                es.id as ID, es.Name,
+						        ecitt.id as ID, cit.Name, ecitt.Date, ecitt.Description,
+                                ecert.id as ID, cet.Name, cet.Description, ecert.InitialDate, ecert.EmployeeID,
+						        eqa.id as ID, eq.InventoryID, eq.Description, eqa.DateOut, eqa.DateIn, eqa.ConditionOut, eqa.ConditionIn, eqa.DueDate   
 
-                          FROM dbo.Employees e 
-                          LEFT JOIN dbo.Emails em
-                          ON em.EmployeeID = e.id
-                          LEFT JOIN dbo.JobTitles jt                           
-                          ON e.JobTitleID = jt.id
-                          LEFT JOIN Phones p
-                          ON p.EmployeeID = e.id
-                          LEFT JOIN dbo.EmployeeCertificationType ect
-                          ON ect.EmployeeID = e.id
-                          LEFT JOIN dbo.CertificationType ct
-                          ON ect.NameID = ct.id
-                          LEFT JOIN dbo.EmployeeCitationType ecit
-                          ON ecit.EmployeeID = e.id
-                          LEFT JOIN dbo.CitationTypes cit
-                          ON ecit.CitationTypeID = cit.id
-                          LEFT JOIN dbo.Departments d
-                          ON e.DepartmentID = d.id"; 
 
-                var employees = await connection.QueryAsync<EmployeeModel, EmailModel, TitleModel, PhoneModel, CertificationModel, CitationModel, DepartmentModel, EmployeeModel>(sql, (e, em, t, p, c, ci, d) =>
-                {
-                    e.EmailList.Add(em);
-                    e.JobTitle = t;
-                    e.Department = d;
-                    e.PhoneList.Add(p);
-                    e.CertificationList.Add(c);
-                    e.CitationsList.Add(ci);
-                    return e;
-                }, splitOn: "EmployeeID, JobTitleID, EmployeeID, EmployeeID, EmployeeID, DepartmentID");
-
-                var result = employees.GroupBy(e => e.ID).Select(g =>
-                {
-                    var groupedEmployee = g.First();
-                    groupedEmployee.EmailList = g.Select(e => e.EmailList.Single()).ToList();
-                    groupedEmployee.PhoneList = g.Select(e => e.PhoneList.Single()).ToList();
-                    groupedEmployee.CertificationList = g.Select(e => e.CertificationList.Single()).ToList();
-                    groupedEmployee.CitationsList = g.Select(e => e.CitationsList.Single()).ToList();
-                    return groupedEmployee;
-                });
-                return result.ToList();
-            }
-        }
-
-        public async Task<List<EmployeeModel>> GetSelectedEmployee(int selectedEmployeeID)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
+                        FROM dbo.Employees e 
+                        LEFT JOIN dbo.Emails em
+                        ON em.EmployeeID = e.id
+                        LEFT JOIN dbo.JobTitles jt                           
+                        ON e.JobTitleID = jt.id
+                        LEFT JOIN Phones p
+                        ON p.EmployeeID = e.id
+                        LEFT JOIN dbo.Departments d
+                        ON e.DepartmentID = d.id
+                        LEFT JOIN dbo.EmployeeStatus es  
+                        ON e.StatusID = es.id
+				        LEFT JOIN dbo.EmployeeCitationType ecitt
+				        ON e.id = ecitt.EmployeeID
+				        LEFT JOIN dbo.CitationTypes cit
+				        ON ecitt.CitationTypeID = cit.id
+				        LEFT JOIN dbo.EmployeeCertificationType ecert
+				        ON e.id = ecert.EmployeeID
+				        LEFT JOIN dbo.CertificationType cet
+				        ON ecert.NameID = cet.id
+				        LEFT JOIN EquipmentAssignments eqa
+				        ON eqa.EmployeeID = e.id
+				        LEFT JOIN Equipment eq
+				        ON eqa.EquipmentID = eq.id";
+                var employees = new Dictionary<int, EmployeeModel>();
+                await connection.QueryAsync<EmployeeModel>
+            (sql,
+            new[]
             {
-                var par = new
+                    typeof(EmployeeModel),
+                    typeof(EmailModel),
+                    typeof(TitleModel),
+                    typeof(PhoneModel),
+                    typeof(DepartmentModel),
+                    typeof(EmployeeStatusModel),
+                    typeof(CitationModel),
+                    typeof(CertificationModel),
+                    typeof(EquipmentAssignmentRecordModel)
+            }
+            , obj =>
+            {
+                EmployeeModel employeeModel = obj[0] as EmployeeModel;
+                EmailModel emailModel = obj[1] as EmailModel;
+                TitleModel titleModel = obj[2] as TitleModel;
+                PhoneModel phoneModel = obj[3] as PhoneModel;
+                DepartmentModel departmentModel = obj[4] as DepartmentModel;
+                EmployeeStatusModel statusModel = obj[5] as EmployeeStatusModel;
+                CitationModel citationModel = obj[6] as CitationModel;
+                CertificationModel certificationModel = obj[7] as CertificationModel;
+                EquipmentAssignmentRecordModel equipmentAssignmentRecord = obj[8] as EquipmentAssignmentRecordModel;
+
+                //employeemodel
+                EmployeeModel employeeEntity = new EmployeeModel();
+                if (!employees.TryGetValue(employeeModel.ID, out employeeEntity))
                 {
-                    SelectedEmployeeID = selectedEmployeeID
-                };
-
-                var sql = @"SELECT e.id, e.FirstName, e.LastName, e.Nickname, 
-                                   em.EmployeeID, em.Address, em.Type, 
-                                   e.JobTitleID, jt.id, jt.Name, 
-                                   p.EmployeeID, p.Number, p.Type,
-                                   ect.EmployeeID, ect.NameID, ect.InitialDate, ect.ExpirationDate,
-                                   ct.id, ct.Name
-                          
-                          FROM dbo.Employees e 
-                          LEFT JOIN dbo.Emails em
-                          ON em.EmployeeID = e.id
-                          LEFT JOIN dbo.JobTitles jt  
-                          ON e.JobTitleID = jt.id
-                          LEFT JOIN Phones p
-                          ON p.EmployeeID = e.id
-                          LEFT JOIN dbo.EmployeeCertificationType ect
-                          ON ect.EmployeeID = e.id
-                          LEFT JOIN dbo.CertificationType ct
-                          ON ect.NameID = ct.id
-                          WHERE e.id = @SelectedEmployeeID";
-
-                List<EmployeeModel> selectedEmployee = new List<EmployeeModel>();
-
-                var employees = await connection.QueryAsync<EmployeeModel, EmailModel, TitleModel, PhoneModel, CertificationModel, EmployeeModel>(sql, (e, em, t, p, c) =>
-                {
-                    e.EmailList.Add(em);
-                    e.JobTitle = t;
-                    e.PhoneList.Add(p);
-                    e.CertificationList.Add(c);
-                    return e;
-                },
-                    par, splitOn: "EmployeeID, JobTitleID, EmployeeID, EmployeeID");
-
-                var groupedEmployees = employees.GroupBy(x => x.ID);
-                
-                foreach (EmployeeModel empmod in groupedEmployees)
-                {
-                    empmod.EmailList.GroupBy(eml => eml.Address);
-                    empmod.CertificationList.GroupBy(clm => clm.Name);
-                    empmod.PhoneList.GroupBy(plm => plm.Number);
+                    employees.Add(employeeModel.ID, employeeEntity = employeeModel);
                 }
 
-                IEnumerable<EmployeeModel> groupedEmployeeList = groupedEmployees.SelectMany(group => group);
+                //list<emailmodel>
+                if (employeeEntity.EmailList == null)
+                {
+                    employeeEntity.EmailList = new List<EmailModel>();
+                }
+                if (emailModel != null)
+                {
+                    if (!employeeEntity.EmailList.Any(x => x.ID == emailModel.ID))
+                    {
+                        employeeEntity.EmailList.Add(emailModel);
+                    }
+                }
 
-                return groupedEmployeeList.ToList();
-            
+                //phonemodel
+                if (employeeEntity.PhoneList == null)
+                {
+                    employeeEntity.PhoneList = new List<PhoneModel>();
+                }
+                if (phoneModel != null)
+                {
+                    if (!employeeEntity.PhoneList.Any(x => x.ID == phoneModel.ID))
+                    {
+                        employeeEntity.PhoneList.Add(phoneModel);
+                    }
+                }
+
+                //title
+                if (employeeEntity.JobTitle == null)
+                {
+                    if (titleModel != null)
+                    {
+                        employeeEntity.JobTitle = titleModel;
+                    }
+                }
+
+                //department
+                if (employeeEntity.Department == null)
+                {
+                    if (departmentModel != null)
+                    {
+                        employeeEntity.Department = departmentModel;
+                    }
+                }
+
+                //status
+                if (employeeEntity.Status == null)
+                {
+                    if (statusModel != null)
+                    {
+                        employeeEntity.Status = statusModel;
+                    }
+                }
+
+                //citation
+                if (employeeEntity.CitationsList == null)
+                {
+                    employeeEntity.CitationsList = new List<CitationModel>();
+                }
+                if (citationModel != null)
+                {
+                    if (!employeeEntity.CitationsList.Any(x => x.ID == citationModel.ID))
+                    {
+                        employeeEntity.CitationsList.Add(citationModel);
+                    }
+                }
+
+                //certification
+                if (employeeEntity.CertificationList == null)
+                {
+                    employeeEntity.CertificationList = new List<CertificationModel>();
+                }
+                if (certificationModel != null)
+                {
+                    if (!employeeEntity.CertificationList.Any(x => x.ID == certificationModel.ID))
+                    {
+                        employeeEntity.CertificationList.Add(certificationModel);
+                    }
+                }
+
+                //equipment record
+                if (employeeEntity.AssignmentHistory == null)
+                {
+                    employeeEntity.AssignmentHistory = new List<EquipmentAssignmentRecordModel>();
+                }
+                if (equipmentAssignmentRecord != null)
+                {
+                    if (!employeeEntity.AssignmentHistory.Any(x => x.ID == equipmentAssignmentRecord.ID))
+                    {
+                        employeeEntity.AssignmentHistory.Add(equipmentAssignmentRecord);
+                    }
+                }
+                return employeeEntity;
+            }); ;
+
+                var result = employees.Values.ToList();
+                return result;
             }
-
-            
         }
+
         public async Task<List<EquipmentModel>> GetEquipmentList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
@@ -268,12 +324,55 @@ namespace WorkDesk_Library.Connections
             }
         }
 
+        public Task<List<EmployeeModel>> GetSelectedEmployee(int selectedEmployeeID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CertificationModel> GetCertificationTypes()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
+            {
+                var sql = @"SELECT *
+                          FROM dbo.CertificationType";
+                var certificationTypes = connection.Query<CertificationModel>(sql).ToList();
+                return certificationTypes;
+            }
+        }
+
+        public List<EmployeeStatusModel> GetEmployeeStatusTypes()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
+            {
+                var sql = @"SELECT *
+                          FROM dbo.EmployeeStatus";
+                var employeeStatusTypes = connection.Query<EmployeeStatusModel>(sql).ToList();
+                return employeeStatusTypes;
+            }
+        }
+
+        public List<DepartmentModel> GetDepartmentTypes()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
+            {
+                var sql = @"SELECT *
+                          FROM dbo.Departments";
+                var departmentNames = connection.Query<DepartmentModel>(sql).ToList();
+                return departmentNames;
+            }
+        }
+
+        public List<TitleModel> GetJobTitleTypes()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
+            {
+                var sql = @"SELECT *
+                          FROM dbo.JobTitles";
+                var jobTitleNames = connection.Query<TitleModel>(sql).ToList();
+                return jobTitleNames;
+            }
+        }
     }
- }
-
- 
-
-//I have a list of PersonModel in an IEnumerable.  I want to group it on ID.
-//I would, presumably, then have only one Person ID, and the EmailList and 
+}
 
 

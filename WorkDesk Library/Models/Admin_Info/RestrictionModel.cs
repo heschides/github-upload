@@ -13,6 +13,11 @@ namespace WorkDesk_Library.Models.Admin_Info
 
         public DateTime EndDate { get; set; }
 
+        public string ToListBoxString()
+        {
+            return $"{Type}: {EndDate}";
+        }
+
         //public RestrictionModel(string type, string endDate)
         //{
         //    Type = type;

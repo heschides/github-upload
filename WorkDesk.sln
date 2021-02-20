@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkDeskUI", "Work Desk Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkDesk_Library", "WorkDesk Library\WorkDesk_Library.csproj", "{CDB35248-001E-4476-B8F3-1FC4412F9E44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkDeskUI_WPF", "WorkDeskUI_WPF\WorkDeskUI_WPF.csproj", "{8D9D1EB3-C14B-4E37-A6F2-E4E290459B6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDB35248-001E-4476-B8F3-1FC4412F9E44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9D1EB3-C14B-4E37-A6F2-E4E290459B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9D1EB3-C14B-4E37-A6F2-E4E290459B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9D1EB3-C14B-4E37-A6F2-E4E290459B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9D1EB3-C14B-4E37-A6F2-E4E290459B6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

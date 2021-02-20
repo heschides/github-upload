@@ -96,9 +96,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binding_Assist\MyTypeDescriptionProvider.cs" />
-    <Compile Include="Binding_Assist\MyCustomTypeDescriptor.cs" />
-    <Compile Include="Binding_Assist\SubPropertyDescriptor.cs" />
+    <Compile Include="Connections\InsertMethods.cs" />
+    <Compile Include="DataAccessMethods\EmployeeDataService.cs" />
     <Compile Include="Models\Admin_Info\CertificationModel.cs" />
     <Compile Include="Models\Admin_Info\CommentModel.cs" />
     <Compile Include="Connections\SqlConnection.cs" />
@@ -108,9 +107,11 @@
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\Admin_Info\DepartmentModel.cs" />
     <Compile Include="Models\Admin_Info\RestrictionModel.cs" />
+    <Compile Include="Models\Admin_Info\EmployeeStatusModel.cs" />
     <Compile Include="Models\Admin_Info\TitleModel.cs" />
     <Compile Include="Models\Admin_Info\EmployeeModel.cs" />
     <Compile Include="Models\Equipment_Info\CICRecordModel.cs" />
+    <Compile Include="Models\Equipment_Info\EquipmentAssignmentRecordModel.cs" />
     <Compile Include="Models\Equipment_Info\EquipmentClassModel.cs" />
     <Compile Include="Models\Equipment_Info\EquipmentVendorModel.cs" />
     <Compile Include="Models\Equipment_Info\JobsiteModel.cs" />
@@ -123,13 +124,6 @@
     <Compile Include="Models\Vehicle_Info\LineItemModel.cs" />
     <Compile Include="Models\Vehicle_Info\ServiceProviderModel.cs" />
     <Compile Include="Models\Vehicle_Info\VehicleModel.cs" />
-    <Compile Include="TestClass.cs" />
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
