@@ -1,11 +1,10 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using WorkDesk_Library.Models;
 using WorkDesk_Library.Models.Admin_Info;
 using WorkDesk_Library.Models.Employee_Info;
 using WorkDesk_Library.Models.Equipment_Info;
@@ -25,9 +24,9 @@ namespace WorkDesk_Library.Connections
                 p.Add("@LastName", NewEmployeeRecord.LastName);
                 p.Add("@FirstName", NewEmployeeRecord.FirstName);
                 p.Add("@HireDate", NewEmployeeRecord.HireDate);
-                p.Add("@Email", NewEmployeeRecord.EmailList);
-                p.Add("@Phone", NewEmployeeRecord.PhoneList); 
-                p.Add("@Nickname", NewEmployeeRecord.Nickname);
+                p.Add("@Email", NewEmployeeRecord.Emails);
+                p.Add("@Phone", NewEmployeeRecord.Phones);
+                p.Add("@Nickname", NewEmployeeRecord.NickName);
                 p.Add("@JobTitleID", NewEmployeeRecord.JobTitle);
                 p.Add(@"Department", NewEmployeeRecord.Department);
                 p.Add(@"ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -128,7 +127,7 @@ namespace WorkDesk_Library.Connections
             }
         }
 
-        public async Task<List<EmployeeModel>> GetEmployeeList()
+        public async Task<ObservableCollection<EmployeeModel>> GetEmployeeList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("WorkDeskDB")))
             {
@@ -201,28 +200,28 @@ namespace WorkDesk_Library.Connections
                 }
 
                 //list<emailmodel>
-                if (employeeEntity.EmailList == null)
+                if (employeeEntity.Emails == null)
                 {
-                    employeeEntity.EmailList = new List<EmailModel>();
+                    employeeEntity.Emails = new ObservableCollection<EmailModel>();
                 }
                 if (emailModel != null)
                 {
-                    if (!employeeEntity.EmailList.Any(x => x.ID == emailModel.ID))
+                    if (!employeeEntity.Emails.Any(x => x.ID == emailModel.ID))
                     {
-                        employeeEntity.EmailList.Add(emailModel);
+                        employeeEntity.Emails.Add(emailModel);
                     }
                 }
 
                 //phonemodel
-                if (employeeEntity.PhoneList == null)
+                if (employeeEntity.Phones == null)
                 {
-                    employeeEntity.PhoneList = new List<PhoneModel>();
+                    employeeEntity.Phones = new ObservableCollection<PhoneModel>();
                 }
                 if (phoneModel != null)
                 {
-                    if (!employeeEntity.PhoneList.Any(x => x.ID == phoneModel.ID))
+                    if (!employeeEntity.Phones.Any(x => x.ID == phoneModel.ID))
                     {
-                        employeeEntity.PhoneList.Add(phoneModel);
+                        employeeEntity.Phones.Add(phoneModel);
                     }
                 }
 
@@ -245,57 +244,58 @@ namespace WorkDesk_Library.Connections
                 }
 
                 //status
-                if (employeeEntity.Status == null)
+                if (employeeEntity.JobStatus == null)
                 {
                     if (statusModel != null)
                     {
-                        employeeEntity.Status = statusModel;
+                        employeeEntity.JobStatus = statusModel;
                     }
                 }
 
                 //citation
-                if (employeeEntity.CitationsList == null)
+                if (employeeEntity.Citations == null)
                 {
-                    employeeEntity.CitationsList = new List<CitationModel>();
+                    employeeEntity.Citations = new ObservableCollection<CitationModel>();
                 }
                 if (citationModel != null)
                 {
-                    if (!employeeEntity.CitationsList.Any(x => x.ID == citationModel.ID))
+                    if (!employeeEntity.Citations.Any(x => x.ID == citationModel.ID))
                     {
-                        employeeEntity.CitationsList.Add(citationModel);
+                        employeeEntity.Citations.Add(citationModel);
                     }
                 }
 
                 //certification
-                if (employeeEntity.CertificationList == null)
+                if (employeeEntity.Certifications == null)
                 {
-                    employeeEntity.CertificationList = new List<CertificationModel>();
+                    employeeEntity.Certifications = new ObservableCollection<CertificationModel>();
                 }
                 if (certificationModel != null)
                 {
-                    if (!employeeEntity.CertificationList.Any(x => x.ID == certificationModel.ID))
+                    if (!employeeEntity.Certifications.Any(x => x.ID == certificationModel.ID))
                     {
-                        employeeEntity.CertificationList.Add(certificationModel);
+                        employeeEntity.Certifications.Add(certificationModel);
                     }
                 }
 
                 //equipment record
-                if (employeeEntity.AssignmentHistory == null)
+                if (employeeEntity.EquipmentAssignments == null)
                 {
-                    employeeEntity.AssignmentHistory = new List<EquipmentAssignmentRecordModel>();
+                    employeeEntity.EquipmentAssignments = new ObservableCollection<EquipmentAssignmentRecordModel>();
                 }
                 if (equipmentAssignmentRecord != null)
                 {
-                    if (!employeeEntity.AssignmentHistory.Any(x => x.ID == equipmentAssignmentRecord.ID))
+                    if (!employeeEntity.EquipmentAssignments.Any(x => x.ID == equipmentAssignmentRecord.ID))
                     {
-                        employeeEntity.AssignmentHistory.Add(equipmentAssignmentRecord);
+                        employeeEntity.EquipmentAssignments.Add(equipmentAssignmentRecord);
                     }
                 }
                 return employeeEntity;
             }); ;
 
                 var result = employees.Values.ToList();
-                return result;
+                ObservableCollection<EmployeeModel> employeeCollection = new ObservableCollection<EmployeeModel>(result);
+                return employeeCollection;
             }
         }
 
@@ -310,14 +310,14 @@ namespace WorkDesk_Library.Connections
 
                 var equipment = await connection.QueryAsync<EquipmentModel, CommentModel, EquipmentModel>(sql, (equipmentItem, comment) =>
                 {
-                    equipmentItem.CommentList.Add(comment);
+                    equipmentItem.Comments.Add(comment);
                     return equipmentItem;
                 }, splitOn: "EquipmentID");
 
                 var result = equipment.GroupBy(e => e.ID).Select(g =>
                 {
                     var groupedEquipmentItem = g.First();
-                    groupedEquipmentItem.CommentList = g.Select(e => e.CommentList.Single()).ToList();
+                    groupedEquipmentItem.Comments = g.Select(e => e.Comments.Single()).ToList();
                     return groupedEquipmentItem;
                 });
                 return result.ToList();
@@ -372,6 +372,8 @@ namespace WorkDesk_Library.Connections
                 return jobTitleNames;
             }
         }
+
+
     }
 }
 

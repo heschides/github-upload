@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WorkDesk_Library.Models.Employee_Info;
 using WorkDesk_Library.DataAccessMethods;
+using static WorkDesk_Library.ViewModels.EmployeeViewModel;
 
 namespace WorkDeskUI_WPF
 {
@@ -25,15 +26,8 @@ namespace WorkDeskUI_WPF
         public MainWindow()
         {
           InitializeComponent();
-            WorkDesk_Library.GlobalConfig.InitializeConnection("database");
-            ViewModel.ControlBinding.DigitalRoot(456);
-
+            employeeGridView.ItemsSource = Employees;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            await EmployeeDataService.GetEmployeeList();
-            employeeGridView.ItemsSource = EmployeeDataService.globalEmployeeList;
-        }
     }
 }

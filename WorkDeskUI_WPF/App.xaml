@@ -1,29 +1,38 @@
 ﻿<Application x:Class="WorkDeskUI_WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WorkDeskUI_WPF"
-             StartupUri="View/MainWindow.xaml">
+             xmlns:local="clr-namespace:WorkDeskUI_WPF">
+  
   <Application.Resources>
     <Style TargetType="TabItem">
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="TabItem">
-            <Grid Name="tabGrid" TextBlock.TextAlignment="Center" TextBlock.FontFamily="SegueUI" >
+            <Grid Name="tabGrid"
+                  TextBlock.TextAlignment="Center"
+                  TextBlock.FontFamily="SegueUI">
               <ContentPresenter x:Name="ContentSite"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Height="25"
                                 MinWidth="125"
-                                ContentSource="Header"
-                                />
+                                ContentSource="Header" />
             </Grid>
             <ControlTemplate.Triggers>
-              <Trigger Property="IsSelected" Value="True">
-                <Setter TargetName="tabGrid" Property="Background" Value="GhostWhite" />
-                <Setter TargetName="tabGrid" Property="Margin" Value="0,-2,0,-1" />
+              <Trigger Property="IsSelected"
+                       Value="True">
+                <Setter TargetName="tabGrid"
+                        Property="Background"
+                        Value="GhostWhite" />
+                <Setter TargetName="tabGrid"
+                        Property="Margin"
+                        Value="0,-2,0,-1" />
               </Trigger>
-              <Trigger Property="IsSelected" Value="False">
-                <Setter TargetName="tabGrid" Property="Background" Value="Silver" />
+              <Trigger Property="IsSelected"
+                       Value="False">
+                <Setter TargetName="tabGrid"
+                        Property="Background"
+                        Value="Silver" />
               </Trigger>
             </ControlTemplate.Triggers>
           </ControlTemplate>
@@ -31,9 +40,18 @@
       </Setter>
     </Style>
 
-    <LinearGradientBrush x:Key ="TabBackgroundBrush">
-      <GradientStop Offset="0" Color="Silver" />
-      <GradientStop Offset="1" Color="Gray" />
+
+    
+    <LinearGradientBrush x:Key ="MenuBackgroundBrush">
+      <GradientStop Offset="0" Color="DodgerBlue" />
+      <GradientStop Offset="1" Color="LightBlue" />
     </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="HeadingBackgroundBrush">
+      <GradientStop Offset="0" Color="DodgerBlue" />
+      <GradientStop Offset="1"
+                    Color="DeepSkyBlue" />
+    </LinearGradientBrush>
+  
   </Application.Resources>
 </Application>

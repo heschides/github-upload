@@ -27,7 +27,7 @@ namespace Work_Desk_Program
         }
 
         public async void Dash_Load(object sender, System.EventArgs e) {
-            await EmployeeDataService.GetEmployeeList();
+            await EmployeeDataService.GetEmployees();
                   EmployeeDataService.GetJobTitleList();
                   
             //EMPLOYEE TAB
@@ -38,7 +38,7 @@ namespace Work_Desk_Program
                 employeeGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 employeeGridView.RowHeadersVisible = false;
                 employeeGridView.MultiSelect = false;
-                employeeGridView.DataSource = EmployeeDataService.globalEmployeeList;
+                employeeGridView.DataSource = EmployeeDataService.Employees;
                 employeeGridView.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     DataPropertyName = "ID",
@@ -241,7 +241,7 @@ namespace Work_Desk_Program
 
 async void NewItemButton_Click(object sender, EventArgs e)
 {
-    List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployeeList();
+    List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployees();
 
     StringBuilder employeesString = new StringBuilder();
 
@@ -257,7 +257,7 @@ async void NewItemButton_Click(object sender, EventArgs e)
 private async void GetEmployeeListButton_Click(object sender, EventArgs e)
 {
 
-    List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployeeList();
+    List<EmployeeModel> newEmployeeListCompiled = await GlobalConfig.Connection.GetEmployees();
     StringBuilder employeesString = new StringBuilder();
 
     foreach (EmployeeModel empmod in newEmployeeListCompiled)
@@ -289,7 +289,7 @@ private async void testButton_Click(object sender, EventArgs e)
 
             //public void GetJobTitleList()
             //{
-            //    foreach (EmployeeModel em in EmployeeDataService.globalEmployeeList)
+            //    foreach (EmployeeModel em in EmployeeDataService.Employees)
             //    {
             //        TitleList.Add(em.JobTitle);
             //    }
@@ -299,7 +299,7 @@ private async void testButton_Click(object sender, EventArgs e)
             //public string GetDepartment(int SelectedEmployeeID)
             //{
             //    {
-            //        foreach (EmployeeModel em in EmployeeDataService.globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+            //        foreach (EmployeeModel em in EmployeeDataService.Employees.Where(person => person.ID == SelectedEmployeeID))
             //        {
             //            selectedDepartment = em.Department.Name;
             //        }
@@ -310,7 +310,7 @@ private async void testButton_Click(object sender, EventArgs e)
             //public string selectedHireDate;
             //public string GetHireDate(int SelectedEmployeeID)
             //{
-            //    foreach (EmployeeModel em in EmployeeDataService.globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+            //    foreach (EmployeeModel em in EmployeeDataService.Employees.Where(person => person.ID == SelectedEmployeeID))
             //    {
             //        selectedHireDate = em.HireDate.ToString();
             //    }

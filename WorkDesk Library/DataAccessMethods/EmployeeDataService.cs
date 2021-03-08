@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using WorkDesk_Library;
 using WorkDesk_Library.Models.Admin_Info;
 using WorkDesk_Library.Models.Employee_Info;
 using WorkDesk_Library.Models.Equipment_Info;
 using static WorkDesk_Library.Models.Employee_Info.EmployeeModel;
+using static WorkDesk_Library.ViewModels.EmployeeViewModel;
+
+
 
 
 
@@ -16,37 +17,24 @@ namespace WorkDesk_Library.DataAccessMethods
 {
     public class EmployeeDataService
     {
-
-
         //CREATE DATASOURCE LISTS
 
-        //public static IList<char> phoneTypes = new List<char>();
-        //public static async Task<List<char>> GetPhoneTypes()
-        //    {
-        //    phoneTypes = GlobalConfig.Connection.GetPhoneTypes();
-        //    return phoneTypes.ToList();
-        //    }
-
-        
-
-        public static IList<EmployeeModel> globalEmployeeList = new List<EmployeeModel>();
-        public static async Task<IList<EmployeeModel>> GetEmployeeList()
+        public static async Task<ObservableCollection<EmployeeModel>> GetEmployees()
         {
-            globalEmployeeList = await GlobalConfig.Connection.GetEmployeeList();
+            Employees = await GlobalConfig.Connection.GetEmployeeList();
 
-            foreach (EmployeeModel eModel in globalEmployeeList)
+            foreach (EmployeeModel eModel in Employees)
             {
                 var groupedEmailList = new List<EmailModel>();
                 var groupedPhoneList = new List<PhoneModel>();
-                var groupedCitationsList = new List<CitationModel>();
+                var groupedCitations = new List<CitationModel>();
                 var groupedCertificationsList = new List<CertificationModel>();
                 List<int> phoneIDs = new List<int>();
                 List<int> emailIDs = new List<int>();
                 List<int> citationIDs = new List<int>();
                 List<int> certificationIDs = new List<int>();
 
-
-                foreach (EmailModel emailModel in eModel.EmailList)
+                foreach (EmailModel emailModel in eModel.Emails)
                 {
                     if (!emailIDs.Contains(emailModel.ID))
                     {
@@ -54,9 +42,8 @@ namespace WorkDesk_Library.DataAccessMethods
                         groupedEmailList.Add(emailModel);
                     }
                 }
-                eModel.EmailList = groupedEmailList;
 
-                foreach (PhoneModel phoneModel in eModel.PhoneList)
+                foreach (PhoneModel phoneModel in eModel.Phones)
                 {
                     if (!phoneIDs.Contains(phoneModel.ID))
                     {
@@ -65,33 +52,37 @@ namespace WorkDesk_Library.DataAccessMethods
                     }
                 }
 
-                foreach (CitationModel citationModel in eModel.CitationsList)
+                foreach (CitationModel citationModel in eModel.Citations)
                     if (!citationIDs.Contains(citationModel.ID))
                     {
                         citationIDs.Add(citationModel.ID);
-                        groupedCitationsList.Add(citationModel);
+                        groupedCitations.Add(citationModel);
                     }
 
-                foreach (CertificationModel certificationModel in eModel.CertificationList)
+                foreach (CertificationModel certificationModel in eModel.Certifications)
                     if (!certificationIDs.Contains(certificationModel.ID))
                     {
                         certificationIDs.Add(certificationModel.ID);
                         groupedCertificationsList.Add(certificationModel);
                     }
 
-                eModel.CertificationList = groupedCertificationsList;
-                eModel.CitationsList = groupedCitationsList;
-                eModel.EmailList = groupedEmailList;
-                eModel.PhoneList = groupedPhoneList;
+                ObservableCollection<CertificationModel> c = new ObservableCollection<CertificationModel>(groupedCertificationsList);
+                eModel.Certifications = c;
+                ObservableCollection<CitationModel> g = new ObservableCollection<CitationModel>(groupedCitations);
+                eModel.Citations = g;
+                ObservableCollection<EmailModel> e = new ObservableCollection<EmailModel>(groupedEmailList);
+                eModel.Emails = e;
+                ObservableCollection<PhoneModel> p = new ObservableCollection<PhoneModel>(groupedPhoneList);
+                eModel.Phones = p;
             }
-            return globalEmployeeList;
+            return Employees;
         }
 
 
         public static IList<TitleModel> TitleList = new List<TitleModel>();
         public static void GetJobTitleList()
         {
-            foreach (EmployeeModel em in globalEmployeeList)
+            foreach (EmployeeModel em in Employees)
             {
                 TitleList.Add(em.JobTitle);
             }
@@ -104,9 +95,9 @@ namespace WorkDesk_Library.DataAccessMethods
             {
                 selectedEmployeePhoneRecords.Clear();
             }
-            foreach (EmployeeModel em in globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+            foreach (EmployeeModel em in Employees.Where(person => person.ID == SelectedEmployeeID))
             {
-                foreach (PhoneModel pm in em.PhoneList)
+                foreach (PhoneModel pm in em.Phones)
                 {
                     selectedEmployeePhoneRecords.Add(pm);
                 }
@@ -122,9 +113,9 @@ namespace WorkDesk_Library.DataAccessMethods
             {
                 selectedEmployeeEmailRecords.Clear();
             }
-            foreach (EmployeeModel em in globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+            foreach (EmployeeModel em in Employees.Where(person => person.ID == SelectedEmployeeID))
             {
-                foreach (EmailModel emm in em.EmailList)
+                foreach (EmailModel emm in em.Emails)
                 {
                     selectedEmployeeEmailRecords.Add(emm);
                 }
@@ -136,9 +127,9 @@ namespace WorkDesk_Library.DataAccessMethods
         public static string selectedEmployeeStatus;
         public static string GetStatus(int SelectedEmployeeID)
         {
-            foreach (EmployeeModel em in globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+            foreach (EmployeeModel em in Employees.Where(person => person.ID == SelectedEmployeeID))
             {
-                selectedEmployeeStatus = em.Status.Name;
+                selectedEmployeeStatus = em.JobStatus.Name;
             }
             return selectedEmployeeStatus;
         }
@@ -148,7 +139,7 @@ namespace WorkDesk_Library.DataAccessMethods
         public static string GetDepartment(int SelectedEmployeeID)
         {
             {
-                foreach (EmployeeModel em in globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+                foreach (EmployeeModel em in Employees.Where(person => person.ID == SelectedEmployeeID))
                 {
                     selectedEmployeeDepartment = em.Department.Name;
                 }
@@ -160,10 +151,10 @@ namespace WorkDesk_Library.DataAccessMethods
         public static string selectedEmployeeHireDate;
         public static string GetHireDate(int SelectedEmployeeID)
         {
-            foreach (EmployeeModel em in globalEmployeeList.Where(person => person.ID == SelectedEmployeeID))
+            foreach (EmployeeModel em in Employees.Where(person => person.ID == SelectedEmployeeID))
             {
 
-                selectedEmployeeHireDate = em.HireDate.ToLongDateString() ;
+                selectedEmployeeHireDate = em.HireDate.ToLongDateString();
             }
             return selectedEmployeeHireDate;
         }
@@ -174,9 +165,9 @@ namespace WorkDesk_Library.DataAccessMethods
         {
             selectedEmployeeCertifications.Clear();
             {
-                foreach (EmployeeModel selectedEmployee in globalEmployeeList.Where(employee => employee.ID == SelectedEmployeeID))
+                foreach (EmployeeModel selectedEmployee in Employees.Where(employee => employee.ID == SelectedEmployeeID))
                 {
-                    foreach (CertificationModel selectedEmployeeCertification in selectedEmployee.CertificationList)
+                    foreach (CertificationModel selectedEmployeeCertification in selectedEmployee.Certifications)
                         selectedEmployeeCertifications.Add(selectedEmployeeCertification);
                 }
             }
@@ -188,9 +179,9 @@ namespace WorkDesk_Library.DataAccessMethods
         {
             selectedEmployeeCitations.Clear();
             {
-                foreach (EmployeeModel selectedEmployee in globalEmployeeList.Where(employee => employee.ID == SelectedEmployeeID))
+                foreach (EmployeeModel selectedEmployee in Employees.Where(employee => employee.ID == SelectedEmployeeID))
                 {
-                    foreach (CitationModel selectedEmployeeCitation in selectedEmployee.CitationsList)
+                    foreach (CitationModel selectedEmployeeCitation in selectedEmployee.Citations)
                     {
                         selectedEmployeeCitations.Add(selectedEmployeeCitation);
                     }
@@ -204,9 +195,9 @@ namespace WorkDesk_Library.DataAccessMethods
         {
             selectedEmployeeAssignmentHistory.Clear();
             {
-                foreach (EmployeeModel selectedEmployee in globalEmployeeList.Where(employee => employee.ID == SelectedEmployeeID))
+                foreach (EmployeeModel selectedEmployee in Employees.Where(employee => employee.ID == SelectedEmployeeID))
                 {
-                    foreach (EquipmentAssignmentRecordModel AssignmentRecord in selectedEmployee.AssignmentHistory)
+                    foreach (EquipmentAssignmentRecordModel AssignmentRecord in selectedEmployee.EquipmentAssignments)
                     {
                         selectedEmployeeAssignmentHistory.Add(AssignmentRecord);
                     }
@@ -217,11 +208,11 @@ namespace WorkDesk_Library.DataAccessMethods
 
         //COMBOBOX DATASOURCES
 
-       
-        
-        
-        
-        
+
+
+
+
+
         //FOR MESSAGEBOX DISPLAY
         public static IList<string> employeeListBoxString(List<EmployeeModel> employees)
         {
@@ -237,7 +228,7 @@ namespace WorkDesk_Library.DataAccessMethods
             IList<string> result = new List<string>();
             foreach (EmployeeModel em in employees.Where(person => person.ID == id))
             {
-                foreach (CertificationModel cm in em.CertificationList)
+                foreach (CertificationModel cm in em.Certifications)
                     result.Add(cm.Name);
             }
             return result;

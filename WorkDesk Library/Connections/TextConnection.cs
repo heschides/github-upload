@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -70,7 +71,7 @@ namespace WorkDesk_Library.Connections
             throw new NotImplementedException();
         }
 
-        Task<List<EmployeeModel>> IDataConnection.GetEmployeeList()
+        Task<ObservableCollection<EmployeeModel>> IDataConnection.GetEmployeeList()
         {
             throw new NotImplementedException();
         }

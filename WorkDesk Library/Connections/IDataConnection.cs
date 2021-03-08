@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace WorkDesk_Library.Connections
     {
         EmployeeModel CreateEmployee(EmployeeModel model);
         EquipmentModel CreateEquipment(EquipmentModel model);
-        Task<List<EmployeeModel>> GetEmployeeList();
+        Task<ObservableCollection<EmployeeModel>> GetEmployeeList();
         Task<List<EquipmentModel>> GetEquipmentList();
         Task<List<EmployeeModel>> GetSelectedEmployee(int selectedEmployeeID);
         List<CertificationModel> GetCertificationTypes();
